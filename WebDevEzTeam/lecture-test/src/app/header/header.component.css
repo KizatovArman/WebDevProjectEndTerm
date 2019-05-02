@@ -1,0 +1,141 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header nav{
+    padding-top: 9px;
+    padding-bottom: 6px;
+    position: sticky;
+    position: -webkit-sticky;/*for safari browsers*/
+    top:0;
+    background-color:rgb(0, 0, 0);
+    width:100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header nav ul{
+    font-weight: 700;
+    list-style: none;
+    margin:0;
+    padding: 0;
+    padding-top: 6px;
+}
+
+header nav ul li{
+    display: block;
+    float: left;
+    position: relative;
+}
+
+.group_of_elements:before, .group_of_elements:after{
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.group_of_elements:after{
+    clear: both;
+}
+.group_of_elements{
+    zoom: 1;
+}
+
+header nav a{
+    display: block;
+    padding: 9px;
+    color: whitesmoke;
+    text-decoration: none;
+    /*border: 3px groove olive;*/
+    border-radius: 5px;
+}
+header nav a:hover{
+    background: rgb(91, 214, 74);
+    color: rgb(255, 204, 64);
+    
+}
+
+header nav ul li ul{
+    display: none;
+    position: absolute;
+    background: #000;
+}
+header nav ul li:hover ul{
+    display: block;
+    border-radius: 5px;
+}
+header nav ul li ul li{
+    display: block;
+    width: 100%;
+}
+.header_elements{
+    margin-left: 50px;
+}
+
+#sign_in{
+    margin-left: 5px;
+    padding-top: 5px;
+    /*padding-bottom: 1px;*/
+    /*padding: 3px;*/
+    display: block;
+    float: right;
+    height:30.4px;    
+}
+
+input[type="submit"]{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+header nav input{
+    padding: 0;
+    padding-bottom: 0;
+    /*border: 3px groove olive;*/
+   /*height: 38.4px;*/
+    border-radius: 5px;
+}
+.footer{
+    padding-left: 0px;
+    padding-bottom: 10px;
+    
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    background-color: black;
+    color: rgb(226, 219, 219);
+    text-align: center;
+}
+
+.footer ul li{
+    margin: 0 auto;
+    list-style: none;
+    display: block;
+    float: left;
+    text-align: center;
+}
+.footer ul a {
+    color: darkseagreen;
+    text-decoration: none;
+    
+}
+.footer ul a:hover{
+    color: rgb(81,248,81);
+}
+
+.footer ul .after_email{
+    margin-left: 80px;
+}
+
+.footer ul .contact_email{
+    margin-left: 250px;
+
+}
+
+.remove__login{
+    display: none;
+}
+.show__login{
+    display: block;
+}

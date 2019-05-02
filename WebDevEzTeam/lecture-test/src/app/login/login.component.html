@@ -1,0 +1,19 @@
+<ng-container *ngIf="!logged">
+  <div class="login__part">
+    <div class="prelogin" style="margin-bottom:20px">
+      Sign In!
+    </div>
+    <section class="wrap">
+      <label class="label__element">Username</label>
+        <input type="text" [(ngModel)]="login" name="username" id="username" placeholder="" class="login__element lg__ml">
+      <label class="label__element"><span>Password</span><span><a href="" class="reset__password">Forgot Password?</a></span></label>
+        <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="" class="login__element lg__pass">
+      <label class="label__element"></label>
+        <input type="submit" name="signin" id="signin" value=" Sign In " (click)="auth()" (click)="sendMessageToHeader()" class="login__element lg__btn">  
+    </section>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="logged">
+  Hello, {{login}}
+</ng-container>

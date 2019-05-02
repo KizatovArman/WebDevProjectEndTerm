@@ -1,0 +1,13 @@
+.types{
+    width: 700px;
+    float: left;
+  box-sizing: border-box;
+}
+.how_to_use{
+    width: 700px;
+    box-sizing: border-box;
+    float: right;
+}
+.supplements ul{
+    list-style: none;
+}

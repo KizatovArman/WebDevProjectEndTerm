@@ -1,0 +1,37 @@
+<header>
+    <nav class="group_of_elements">
+        <ul>
+            <li class="header_elements"><a href="">Main Menu</a></li>
+            <li class="header_elements" (click)="showLoginSignUp()"><a routerLink ="./work-on-yourself" routerLinkActive="active">Work On Yourself</a>
+                <ul>
+                    <li ><a routerLink ="./work-on-yourself" routerLinkActive="active">Take a Test</a></li>
+                    <li ><a routerLink ="./dietary" routerLinkActive="active">Dietary Plan</a></li>
+                    <li ><a routerLink ="./exercises" routerLinkActive="active">Exercises</a></li>
+                    <li ><a routerLink ="./supplement-info" routerLinkActive="active">Supplement Info</a></li>
+                    <li ><a href="">Progress</a> </li>
+                </ul>
+            </li>
+            <li class="header_elements" ><a routerLink ="./supplement-info" routerLinkActive="active"  (click)="showLoginSignUp()">Fitness Supplements</a>
+                <ul>
+                    <li ><a href="http://sportcenter.kz/category/protein/?promo_id=783371" target="_blank">Protein</a></li>
+                    <li ><a href="http://sportcenter.kz/category/zhiroszhigatel/?promo_id=783371" target="_blank">Fat Burners</a></li>
+                    <li ><a href="http://sportcenter.kz/category/energetik-no/?promo_id=783371" target="_blank">Pre-Workout</a></li>
+                </ul>
+            </li>
+            <li class="header_elements " (click) ="hideLogin($event)" *ngIf ="!pressedLogin"><a routerLink="./sign-in" routerLinkActive="active">Login</a></li>
+            <li class="header_elements" (click) = "hideSignUp($event)" *ngIf ="!pressedSignUp">
+                <a routerLink="./sign-up" routerLinkActive ="active">Create a new account</a>
+            </li>
+            <li class="header_elements"><a href="">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<div class ="footer">
+    
+    <ul>
+        <li>Contact us via:</li>
+        <li class ="contact_email">Email: <a href="">PressFtoStayFit@gmail.com</a></li>
+        <li class ="after_email">Phone: 8-7232-7766</li>
+        <li class ="after_email">Telegram: <a href="">@PressFtoStayFit</a></li>
+    </ul>
+</div>
