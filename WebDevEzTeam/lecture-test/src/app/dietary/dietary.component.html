@@ -1,22 +1,6 @@
-
-<div class ="keto_diet">
-    <h2>What “keto” means</h2><br>
-    <p>The “keto” in a ketogenic diet comes from the fact that it allows the body to produce small fuel molecules called “ketones”.
-        This is an alternative fuel source for the body, used when blood sugar (glucose) is in short supply.
-        
-        Ketones are produced if you eat very few carbs (that are quickly broken down into blood sugar) and only moderate amounts of protein (excess protein can also be converted to blood sugar).
-        
-        The liver produces ketones from fat. These ketones then serve as a fuel source throughout the body, especially for the brain.
-        
-        The brain is a hungry organ that consumes lots of energy every day, and it can’t run on fat directly. It can only run on glucose… or ketones.
-        
-        
-        On a ketogenic diet, your entire body switches its fuel supply to run mostly on fat, burning fat 24-7. When insulin levels become very low, fat burning can increase dramatically. It becomes easier to access your fat stores to burn them off.
-        This is great if you’re trying to lose weight, but there are also other less obvious benefits, such as less hunger and a steady supply of energy. This may help keep you alert and focused.
-        
-        When the body produces ketones, it enters a metabolic state called ketosis. The fastest way to get there is by fasting – not eating anything – but nobody can fast forever.
-        
-        A keto diet, on the other hand, can be eaten indefinitely and also results in ketosis. It has many of the benefits of fasting – including weight loss – without having to fast.
-      </p>
-
+<div class="Diets">
+  <div *ngFor = "let diet of diets">
+    <p>{{diet.title}}</p><br>
+    <p>{{diet.description}}</p>
+  </div>
 </div>

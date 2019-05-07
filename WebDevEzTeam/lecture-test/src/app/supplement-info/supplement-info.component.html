@@ -1,33 +1,15 @@
-<div class ="supplements">
-    <ul>
-      <li><h1>Protein Powder</h1>
-        <div class ="types">
-          <h3>Types of protein powder:</h3>
-          <p>There are several different types of protein powder. Whey is the most popular protein supplement and the one that researchers have tended to focus on, but it is not the only one. Common types of protein powder include:</p>
-          <ul>
-              <li>Whey: This water-soluble milk protein is popular among athletes. It is a complete protein, meaning that it contains all of the amino acids that the human body requires from food. The body absorbs whey protein quickly and easily.</li><br>
-              <li>Casein: This type of protein is rich in glutamine, an amino acid that may speed up muscle recovery after exercise. Casein comes from dairy, making it unsuitable for vegans and people with milk allergies. The body digests this protein more slowly, so it may be best to take it at night.</li><br>
-              <li>Soy: Soy protein is an excellent alternative to whey or casein for people who do not consume dairy. It also contains all the essential amino acids.</li><br>
-              <li>Pea: Many plant-based protein powders contain pea protein, which is a high-quality alternative to soy- and dairy-based proteins. Pea protein is a good source of the amino acid arginine.</li><br>
-              <li>Hemp: Hemp seeds are complete proteins that also contain essential fatty acids. This makes hemp an excellent choice for vegans or those with dairy or soy allergies.</li><br>
-            </ul>
-        </div>
-        <div class="how_to_use">
-            <h3>How to use protein powder:</h3>
-            <p>Before using protein powders, people should calculate their nutritional needs. Those who do not get enough protein from their diet could consider supplementing with protein powders.
-              <br>However, it is best to avoid consuming too much protein. Some powders contain up to 80 g per serving, which is too much for most people.
-              <br>A 2013 review found that long-term excessive consumption of protein may damage the kidneys and liver and affect the body's bone and calcium balance.
+<!-- <ng-container *ngIf="!clicked">
+  <button (click)="getSupplementInfo()" (click)="checkClicked"></button>
+</ng-container>
+<ng-container *ngIf="clicked">
 
-<br>Excessively high levels of protein in the diet can also result in a reduced intake of other beneficial foods, such as fiber-rich fruits, vegetables, and legumes that the body uses to feed and sustain gut bacteria.
+</ng-container> -->
 
-<br>The optimal timing of protein supplementation is unclear. Many people suggest taking it after workouts, but research findings are inconclusive due to studies producing conflicting results.
-
-<br>For example, a 2018 study reported that taking protein supplements with meals is more effective for weight management and reducing fat mass than taking them between meals.
-
-<br>In contrast, a 2014 study reported that a 30 g protein dose after exercise improves protein synthesis in those following a reduced-calorie diet.
-
-<br>People can mix flavored protein powder with water according to the directions on the packaging. Alternatively, many people blend protein powder into milk or fruit and vegetable smoothies.
-            </p>
-        </div>
-      </ul>
+<ng-container>
+  <div class="supplements">
+    <div *ngFor = "let suppl of supplements">
+      <p>{{suppl.title}}</p><br>
+      <p>{{suppl.description}}</p>
+    </div>
   </div>
+</ng-container>

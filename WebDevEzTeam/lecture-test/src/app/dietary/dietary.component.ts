@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IDiet } from '../shared/models/models';
+import { ProviderService } from '../shared/services/provider.service';
 
 @Component({
   selector: 'app-dietary',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DietaryComponent implements OnInit {
 
-  constructor() { }
+  public diets: IDiet[] = [];
+  
+
+  constructor(private provider: ProviderService) { }
 
   ngOnInit() {
+    this.getDiets()
   }
 
+  getDiets(){
+    this.provider.getDiets().then(res=>{
+      this.diets = res;
+    })
+  }
 }
