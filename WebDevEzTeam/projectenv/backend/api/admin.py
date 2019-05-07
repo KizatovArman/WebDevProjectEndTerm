@@ -1,3 +1,5 @@
 from django.contrib import admin
+from api.models import Supplement, Diets
 
-# Register your models here.
+admin.site.register(Supplement)
+admin.site.register(Diets)
