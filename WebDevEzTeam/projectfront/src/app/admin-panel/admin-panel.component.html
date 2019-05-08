@@ -1,0 +1,20 @@
+<input type="text" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName">
+<button (click)="createExerciseCategory()">Create Exercise Category</button><br>
+
+Exercise Categories List<br>
+
+<div class="exercise__categories">
+  <div *ngFor = "let excategory of exerciseCategories">
+    <ng-container *ngIf="updateExerciseCategoryPressed">
+      <input type="text" [(ngModel)] ="excategory.name">
+      <button (click)="updateExerciseCategory(excategory)">Save To Backend</button>
+      <button (click)="deleteExerciseCategory(excategory)">Delete On Backend</button>
+    </ng-container>
+
+    <ng-container *ngIf="!updateExerciseCategoryPressed">
+      <div>{{excategory.name}}</div>
+    </ng-container>
+  </div>
+  <button *ngIf="!updateExerciseCategoryPressed" (click)="showExerciseCategories()">Update Exercise Categories</button>
+  <button *ngIf="updateExerciseCategoryPressed" (click)="getExerciseCategoryList()" (click)="showExerciseCategories()">Back To List</button>
+</div>

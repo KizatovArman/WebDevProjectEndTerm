@@ -11,10 +11,11 @@ class TaskManager(models.Manager):
         return self.filter(created_by=user)
 
 
+# Task Model
 class Task(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(default=datetime.now())
-    due_on = models.DateTimeField(default=None, null=True)
+    # due_on = models.DateTimeField(default=None, null=True)
     status = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -54,14 +55,14 @@ def save_profile(sender, instance, **kwargs):
 # Diets Model
 class Diets(models.Model):
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=1500)
 
     class Meta:
         verbose_name = 'Diet'
         verbose_name_plural = 'Diets'
 
 
-# Supplement
+# Supplement Model
 class Supplement(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=1500)
@@ -69,3 +70,25 @@ class Supplement(models.Model):
     class Meta:
         verbose_name = 'Supplement'
         verbose_name_plural = 'Supplements'
+
+
+# Exercise Category Model
+class ExerciseCategory(models.Model):
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = "Exercise Category"
+        verbose_name_plural = "Exercise Categories"
+
+
+# Exercise Model
+class Exercise(models.Model):
+    title = models.CharField(max_length=255)
+    photo_link = models.CharField(max_length=255)
+    equipment_needed = models.CharField(max_length=255)
+    how_to_do_tips = models.CharField(max_length=1500)
+    exercise_category = models.ForeignKey(ExerciseCategory, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Exercise'
+        verbose_name_plural = 'Exercises'

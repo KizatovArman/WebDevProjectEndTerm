@@ -8,6 +8,8 @@ import { DietaryComponent } from './dietary/dietary.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { SupplementInfoComponent } from './supplement-info/supplement-info.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path:'sign-in',
     component:LoginComponent,
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
+  },
+  {
+    path:'adminpanel',
+    component:AdminPanelComponent
   }
   // {
   // },

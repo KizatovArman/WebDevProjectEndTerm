@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   public logged = false;
   public login: any ="";
   public password: any ="";
+  public userId = 0;
+  public userName = "";
 
   message: boolean = this.logged;
   @Output() messageEvent = new EventEmitter<boolean>();
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
     const token = localStorage.getItem('token');
     if(token){
       this.logged = true;
+      this.userName = localStorage.getItem('userName');
     }
   }
 
@@ -31,18 +34,20 @@ export class LoginComponent implements OnInit {
 
   auth(){
     if((this.login !=='') && this.password !==''){
-      this.provider.auth(this.login, this.password).then(res=>{
+      this.provider.login(this.login, this.password).then(res=>{
         localStorage.setItem('token', res.token);
-
+        localStorage.setItem('userId',res.user_id.toString());
+        localStorage.setItem('userName', res.username);
         this.logged = true;
+        window.location.reload();
       });
     }
   }
 
-  logout(){
-    this.provider.logout().then(res=>{
-      localStorage.clear();
-      this.logged = false;
-    })
-  }
+  // logout(){
+  //   this.provider.logout().then(res=>{
+  //     localStorage.clear();
+  //     this.logged = false;
+  //   })
+  // }
 }

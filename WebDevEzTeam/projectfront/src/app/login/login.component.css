@@ -36,6 +36,25 @@
 
 .lg__btn{
     background-color: rgb(82, 243, 42);
+    border: 3px solid orange;
     color: white;
     font-size: 20px;
+}
+
+.lg__btn:hover{
+    cursor: pointer;
+}
+
+.profile{
+    background: black;
+    font-size: 16px;
+    padding: 5px 10px;
+    color: whitesmoke;
+    border: 1px solid rgb(91, 214, 74);
+    border-radius: 5px;
+    text-decoration: none;
+}
+.profile:hover{
+    background: rgb(91, 214, 74);
+    color: rgb(255, 204, 64);
 }

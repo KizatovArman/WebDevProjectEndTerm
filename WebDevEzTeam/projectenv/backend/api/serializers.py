@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Diets, Supplement, Task
+from .models import Diets, Supplement, Task, Profile, ExerciseCategory, Exercise
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 
@@ -19,11 +19,36 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'password', 'email', 'is_superuser')
 
 
+# Profile Serializer
+class ProfileSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    user = UserSerializer(read_only=True)
+    first_name = serializers.CharField()
+    second_name = serializers.CharField()
+    task_count = serializers.IntegerField()
+    overall_body_test = serializers.IntegerField()
+    allergies = serializers.CharField()
+    blood_pressure = serializers.CharField()
+
+    class Meta:
+        model = Profile
+        fields = (
+            'id',
+            'user',
+            'first_name',
+            'second_name',
+            'task_count',
+            'overall_body_test',
+            'allergies',
+            'blood_pressure'
+        )
+
+
 # Task Serializer
 class TaskSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField()
-    created_at = serializers.DateTimeField()
+    created_at = serializers.DateTimeField(read_only=True)
     status = serializers.CharField()
     created_by = UserSerializer(read_only=True)
 
@@ -36,6 +61,16 @@ class TaskSerializer(serializers.ModelSerializer):
             'status',
             'created_by'
         )
+
+    def create(self, validated_data):
+        return Task.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.status = validated_data.get('status', instance.status)
+        created_by = UserSerializer(read_only=True)
+        instance.save()
+        return instance
 
 
 # Supplement Serializer
@@ -69,3 +104,35 @@ class DietSerializer(serializers.ModelSerializer):
             'title',
             'description'
         )
+
+
+# Exercise Category Serializer
+class ExerciseCategorySerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(max_length=255)
+
+    class Meta:
+        model = ExerciseCategory
+        fields = '__all__'
+
+
+# Exercise Serializer
+class ExerciseSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(max_length=255)
+    photo_link = serializers.CharField(max_length=255)
+    equipment_needed = serializers.CharField(max_length=255)
+    how_to_do_tips = serializers.CharField(max_length=255)
+    exercise_category = ExerciseCategorySerializer()
+
+    def create(self, validated_data):
+        return Exercise.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.photo_link = validated_data.get('photo_link', instance.photo_link)
+        instance.equipment_needed = validated_data.get('equipment_needed',instance.equipment_needed)
+        instance.how_to_do_tips = validated_data.get('how_to_do_tips', instance.how_to_do_tips)
+        instance.exercise_category = validated_data.get('exercise_category', instance.exercise_category)
+        instance.save()
+        return instance

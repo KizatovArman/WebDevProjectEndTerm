@@ -16,6 +16,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ProviderService } from './shared/services/provider.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './AuthInterceptor';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { AuthInterceptor } from './AuthInterceptor';
     SupplementInfoComponent,
     LoginComponent,
     ResetPasswordComponent,
+    ProfileComponent,
+    AdminPanelComponent,
   ],
   imports: [
     FormsModule,

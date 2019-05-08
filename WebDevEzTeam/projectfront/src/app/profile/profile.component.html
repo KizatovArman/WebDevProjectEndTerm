@@ -1,0 +1,32 @@
+<div>
+  <ng-container *ngIf="!updateUserProfile">
+    <label>First Name</label><br>
+      <div>{{firstName}}</div><br>
+    <label>Second Name</label><br>
+      <div>{{secondName}}</div><br>
+    <label>Tasks Count</label><br>
+      <div>{{taskCount}}</div><br>
+    <label>Body test Result</label><br>
+      <div>{{overallBodyTest}}</div><br>
+    <label>Allergies</label><br>
+      <div>{{allergies}}</div><br>
+    <label>Blood Pressure</label><br>
+      <div>{{bloodPressure}}</div><br>
+    <button (click)="showProfile()">Change Profile</button>
+  </ng-container>
+  <ng-container *ngIf="updateUserProfile">
+    <label>First Name</label><br>
+      <input type="text" [(ngModel)]="firstName"><br>
+    <label>Second Name</label><br>
+      <input type="text" [(ngModel)]="secondName"><br>
+    <label>Tasks Count</label><br>
+      <div>{{taskCount}}</div><br>
+    <label>Body test Result</label><br>
+      <div>{{overallBodyTest}}</div><br>
+    <label>Allergies</label><br>
+      <input type="text" [(ngModel)]="allergies"><br>
+    <label>Blood Pressure</label><br>
+      <input type="text" [(ngModel)]="bloodPressure"><br>
+    <button (click)="showProfile()" (click)="saveProfile(user_id)">Save</button>
+  </ng-container>
+</div>

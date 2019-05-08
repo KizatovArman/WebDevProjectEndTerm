@@ -4,8 +4,8 @@
             <li class="header_elements"><a href="">Main Menu</a></li>
             <li class="header_elements" (click)="showLoginSignUp()"><a routerLink ="./work-on-yourself" routerLinkActive="active">Work On Yourself</a>
                 <ul>
-                    <li ><a routerLink ="./work-on-yourself" routerLinkActive="active">Take a Test</a></li>
-                    <li ><a routerLink ="./dietary" routerLinkActive="active">Dietary Plan</a></li>
+                    <li *ngIf="logged"><a routerLink ="./work-on-yourself" routerLinkActive="active">Take a Test</a></li>
+                    <li ><a routerLink ="./dietary" routerLinkActive="active">Diets</a></li>
                     <li ><a routerLink ="./exercises" routerLinkActive="active">Exercises</a></li>
                     <li ><a routerLink ="./supplement-info" routerLinkActive="active">Supplement Info</a></li>
                     <li ><a href="">Progress</a> </li>
@@ -18,11 +18,16 @@
                     <li ><a href="http://sportcenter.kz/category/energetik-no/?promo_id=783371" target="_blank">Pre-Workout</a></li>
                 </ul>
             </li>
-            <li class="header_elements " (click) ="hideLogin($event)" *ngIf ="!pressedLogin"><a routerLink="./sign-in" routerLinkActive="active">Login</a></li>
-            <li class="header_elements" (click) = "hideSignUp($event)" *ngIf ="!pressedSignUp">
-                <a routerLink="./sign-up" routerLinkActive ="active">Create a new account</a>
+            <li *ngIf="!logged" class="header_elements"><a routerLink="./sign-in" routerLinkActive="active">Login</a></li>
+            <li *ngIf="!logged" class="header_elements"><a routerLink="./sign-up" routerLinkActive ="active">Create new account</a></li>
+            <li *ngIf="logged" class="header_elements"><a href="">{{userName}}</a>
+                <ul>
+                    <li><a href="">Create Your Program</a></li>
+                    <li><a routerLink="./profile" routerLinkActive="active">Profile</a></li>
+                    <li *ngIf="isadmin"><a routerLink="./adminpanel" routerLinkActive="active">Admin Panel</a></li>
+                </ul>
             </li>
-            <li class="header_elements"><a href="">Logout</a></li>
+            <li *ngIf="logged" class="header_elements" (click)="logout()"><a href="">Logout</a></li>
         </ul>
     </nav>
 </header>

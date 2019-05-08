@@ -10,9 +10,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import DietSerializer
 
-# Works
+
+# Class Based View
 class DietListAllowAny(APIView):
     def get(self, request):
         diets = Diets.objects.all()
         serializer = DietSerializer(diets, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# class

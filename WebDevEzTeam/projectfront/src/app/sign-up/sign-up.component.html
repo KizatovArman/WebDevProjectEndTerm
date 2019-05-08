@@ -1,0 +1,11 @@
+<div class="account" *ngIf="!registered">
+  <form>
+    <label>Username</label><br/>
+      <input type="text" class="username" name="username" placeholder="Username" [(ngModel)]="login" ><br>
+    <label>Enter your email address</label><br/>              	
+      <input type="text" class="email" name="mail" placeholder="Email address" [(ngModel)]="email"><br/>
+    <label>Create your password</label><br/>
+      <input type="password" class="pw" name="pasww" placeholder="New password" [(ngModel)]="password"><br/>
+      <input type="submit" value="Sign Up" (click)="register()"><br/>
+    </form>
+  </div>
