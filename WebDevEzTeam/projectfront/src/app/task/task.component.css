@@ -1,3 +1,25 @@
+/* body {
+    font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    width: 1900px;
+    height: 800px;
+    background-image: url("http://www.yogafleet.com/images/1/Fitness-Wallpaper-10.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: absolute;
+} */
+
+/* .wrapper img {
+    width: 100%;
+    filter: alpha(Opacity=50);
+    opacity: 0.8; 
+    overflow: visible;
+} */
+
 .task{
     border: 1px solid black;
 }

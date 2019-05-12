@@ -1,24 +1,31 @@
-<div class="create__newtask">
-  <input type="text" placeholder="Name" [(ngModel)]="nameOfTask">
-  <input type="text" placeholder="Status" [(ngModel)]="statusOfTask">
-  <button (click)="createNewTask()" (click)="increaseTasknumber()">Add New Task</button>
-</div>
-<div class="tasks">
-  <div *ngFor="let task of tasks">
-    <div class="task">
-        <ng-container *ngIf="task.id !== cur_task_id">
-          <p>{{task.name}}</p>
-          <p>{{task.created_at}}</p>
-          <p>{{task.status}}</p>
-          <button (click)="chooseTask(task)">Update</button>
-          <button (click)="deleteTask(task)">Delete</button>
-        </ng-container>
-        <ng-container *ngIf="task.id == cur_task_id">
-          <input type="text" [(ngModel)] ="task.name">
-          <p>{{task.created_at}}</p>
-          <input type="text" [(ngModel)]="task.status">
-          <button (click)="updateTaskI(task)">Save</button>
-        </ng-container>
-    </div>
-  </div>
-</div>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="create__newtask">
+        <input type="text" placeholder="Name" [(ngModel)]="nameOfTask" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"> <br>
+        <input type="text" placeholder="Status" [(ngModel)]="statusOfTask" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"> <br>
+        <button (click)="createNewTask()" (click)="increaseTasknumber()" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Add New Task</button>
+      </div>
+      <div class="tasks">
+        <div *ngFor="let task of tasks">
+          <div class="task">
+              <ng-container *ngIf="task.id !== cur_task_id">
+                <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{task.name}}</p>
+                <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{task.created_at}}</p>
+                <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{task.status}}</p>
+                <button (click)="chooseTask(task)" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Update</button>
+                <button (click)="deleteTask(task)" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Delete</button>
+              </ng-container>
+              <ng-container *ngIf="task.id == cur_task_id">
+                <input type="text" [(ngModel)] ="task.name">
+                <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{task.created_at}}</p>
+                <input type="text" [(ngModel)]="task.status" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">
+                <button (click)="updateTaskI(task)">Save</button>
+              </ng-container>
+          </div>
+        </div>
+      </div>
+</body>

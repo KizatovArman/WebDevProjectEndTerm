@@ -13,17 +13,7 @@ export class ProviderService extends MainService{
   constructor(http: HttpClient) {
     super(http);
    }
-
-  //  getTaskLists(): Promise<TaskList[]>{
-  //    return this.get('http://localhost:8000/api/task_lists/', {});
-  //  }
-
-  //  getTasks(task_lists: TaskList): Promise<Task[]>{
-  //    return this.get(`http://localhost:8000/api/task_lists/${task_lists.id}/tasks/`,{});
-  //  }
-
   
-
   login(uname: any, password: any): Promise<IAuthResponse>{
     return this.post('http://localhost:8000/api/login/',{
       username: uname,

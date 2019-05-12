@@ -27,7 +27,8 @@ export class SignUpComponent implements OnInit {
         localStorage.setItem('userId',res.user_id.toString());
         localStorage.setItem('userName', res.username);
         this.registered = true;
-        window.location.reload();
+        // window.location.reload();
+        window.location.href = "http://localhost:4200/"
       })
     }
   }

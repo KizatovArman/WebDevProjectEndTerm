@@ -15,6 +15,7 @@ header nav{
 }
 
 header nav ul{
+    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
     font-weight: 700;
     list-style: none;
     margin:0;
@@ -89,6 +90,4 @@ header nav input{
     /*border: 3px groove olive;*/
    /*height: 38.4px;*/
     border-radius: 5px;
-
-
 }

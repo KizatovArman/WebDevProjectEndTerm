@@ -27,7 +27,7 @@ def login(request):
     user = serializer.validated_data.get('user')
     token, created = Token.objects.get_or_create(user=user)
     # print(request.user)
-    return Response({'token': token.key, 'user_id': user.id, 'username': user.username})
+    return Response({'token': token.key, 'user_id': user.id, 'username': user.username, 'is_superuser': user.is_superuser})
 
 
 # Function Based View
