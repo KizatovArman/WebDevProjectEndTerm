@@ -12,7 +12,11 @@ export interface IAuthResponse{
 }
 
 export interface ISupplement{
+<<<<<<< HEAD
     id: number,
+=======
+    id:number,
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
     title: string,
     description: string
 }
@@ -20,7 +24,8 @@ export interface ISupplement{
 export interface IDiet{
     id: number,
     title: string,
-    description: string
+    description: string,
+    id: number
 }
 
 export interface IRegResponse{
@@ -49,6 +54,7 @@ export interface IUserProfileList{
     username: string,
     email: string,
     is_superuser: string
+<<<<<<< HEAD
 }
 
 export interface IExercise{
@@ -57,4 +63,6 @@ export interface IExercise{
     photo_link: string,
     equipment_needed: string,
     how_to_do_tips:string
+=======
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
 }

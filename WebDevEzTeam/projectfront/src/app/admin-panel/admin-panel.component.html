@@ -1,4 +1,5 @@
 <div class="admin__buttons">
+<<<<<<< HEAD
   <button (click)="manipulateExerciseCategories()">Exercise Categories</button>  
 </div>
 
@@ -52,3 +53,64 @@
       </ng-container>
     </div>
 </ng-container>
+=======
+  <button (click)="manipulateDiets()">Diets</button>
+  <button (click)="manipulateSupplements()">Supplements</button>
+  <button (click)="showUsersList()">Userlist</button>
+  
+</div>
+
+<ng-container *ngIf="showUserListPressed">
+  <div *ngFor="let user of userlist">
+    {{user.username}}
+    {{user.email}}
+    {{user.is_superuser}}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="maniplateDietsPressed">
+  <input type="text" [(ngModel)]="dietName">
+  <input type="text" [(ngModel)]="dietDescription">
+  <button (click)="createDiet()">Create Diet</button><br>
+
+  Diets List:<br>
+  <div *ngFor="let diet of diets">
+    <ng-container *ngIf="updateDietPressed">
+      <input type="text" [(ngModel)]="diet.title">
+      <input type="text" [(ngModel)]="diet.description">
+      <button (click)="updateDiet(diet)">Save To Backend</button>
+      <button (click)="deleteDiet(diet)">Delete From Backend</button>
+    </ng-container>
+
+    <ng-container *ngIf="!updateDietPressed">
+      <div>{{diet.title}}</div>
+      <div>{{diet.description}}</div>
+    </ng-container>
+  </div>
+  <button *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
+  <button *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
+</ng-container>
+
+<ng-container *ngIf="manipulateSupplementPressed">
+  <input type="text" class="supplements__name" [(ngModel)]="supplementName">
+  <input type="text" class="supplements__description" [(ngModel)]="supplementDescription">
+  <button (click)="createSupplement()">Create Supplement</button><br>
+
+  Supplements List:<br>
+  <div *ngFor = "let sup of supplements">
+    <ng-container *ngIf="updateSupplementPressed">
+      <input type="text" [(ngModel)]="sup.title">
+      <input type="text" [(ngModel)]="sup.description">
+      <button (click)="updateSupplement(sup)">Save To Backend</button>
+      <button (click)="deleteThisSupplement(sup)">Delete From Backend</button>
+    </ng-container>
+
+    <ng-container *ngIf="!updateSupplementPressed">
+      <div>{{sup.title}}</div>
+      <div>{{sup.description}}</div>
+    </ng-container>
+  </div>
+  <button *ngIf="!updateSupplementPressed" (click)="showSupplement()">Update Supplements</button>
+  <button *ngIf="updateSupplementPressed" (click)="getSupplementsList()" (click)="showSupplement()">Back To List</button>
+</ng-container>
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea

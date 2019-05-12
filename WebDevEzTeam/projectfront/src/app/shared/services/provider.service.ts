@@ -1,7 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { MainService } from './main.service';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile, IUserProfileList, IExercise } from '../models/models';
+=======
+import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile, IUserProfileList } from '../models/models';
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
 
 @Injectable({
   providedIn: 'root'
@@ -108,6 +112,7 @@ export class ProviderService extends MainService{
     })
   }
 
+<<<<<<< HEAD
   // Admin Panel
   deleteExercise(excategory: IExerciseCategory, exercise:IExercise):Promise<any>{
     return this.delet('http://localhost:8000/api/exercise_category/'+excategory.id+'/exercises/'+exercise.id+'/',{})
@@ -116,11 +121,15 @@ export class ProviderService extends MainService{
   // Admin Panel
   deleteExerciseCategory(exerciseCategory: IExerciseCategory):Promise<any>{
     return this.delet('http://localhost:8000/api/exercise_category/'+exerciseCategory.id+'/',{})
+=======
+  deleteExerciseCategory(exerciseCategory: IExerciseCategory):Promise<IExerciseCategory>{
+    return this.delet('http://localhost:8000/api/exercise_category/' + exerciseCategory.id + '/',{})
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
   }
 
   // Authentificated Users
   accessProfile(userId: any):Promise<IProfile>{
-    return this.get('http://localhost:8000/api/profile/'+userId+"/",{})
+    return this.get('http://localhost:8000/api/profile/' + userId + "/",{})
   }
 
   // Authentificated Users
@@ -137,7 +146,7 @@ export class ProviderService extends MainService{
 
   // Authentificated Users
   changeProfile(userId: any, first_name: any, second_name:any, task_count:any, overall_body_test:any, allergies:any, blood_pressure: any):Promise<IProfile>{
-    return this.put('http://localhost:8000/api/profile/'+userId+"/",{
+    return this.put('http://localhost:8000/api/profile/' + userId + "/",{
       first_name: first_name,
       second_name: second_name,
       task_count: task_count,
@@ -185,5 +194,55 @@ export class ProviderService extends MainService{
       blood_pressure: blood_pressure
     })
   }
+<<<<<<< HEAD
+=======
+  
+  // Admin Panel
+  deleteDiet(diet: IDiet):Promise<any>{
+    return this.delet('http://localhost:8000/api/diet/'+ diet.id + "/",{})
+  }
+
+  // Admin Panel
+  deleteSupplement(supplement: ISupplement):Promise<any>{
+    return this.delet('http://localhost:8000/api/supplement/'+supplement.id+"/",{})
+  }
+  
+  // Admin Panel
+  updateDiet(diet: IDiet):Promise<IDiet>{
+    return this.put('http://localhost:8000/api/diet/' + diet.id + "/",{
+      title: diet.title,
+      description: diet.description
+    })
+  }
+
+  // Admin Panel
+  updateSupplement(supplement: ISupplement):Promise<ISupplement>{
+    return this.put('http://localhost:8000/api/supplement/'+supplement.id+"/",{
+      title: supplement.title,
+      description: supplement.description
+    })
+  }
+
+  // Admin Panel
+  createNewDiet(title: any, description: any):Promise<IDiet>{
+    return this.post('http://localhost:8000/api/diet/',{
+      title: title,
+      description: description
+    })
+  }
+
+  // Admin Panel
+  createNewSupplement(title: any, description: any):Promise<ISupplement>{
+    return this.post('http://localhost:8000/api/supplement/',{
+      title: title,
+      description: description
+    })
+  }
+
+  // Admin Panel
+  getUserList():Promise<IUserProfileList[]>{
+    return this.get('http://localhost:8000/api/users/',{})
+  }
+>>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
 
 }
