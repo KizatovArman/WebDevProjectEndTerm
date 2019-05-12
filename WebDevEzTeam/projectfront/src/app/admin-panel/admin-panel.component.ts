@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../shared/services/provider.service';
-import { IExerciseCategory, IDiet, IUserProfileList } from '../shared/models/models';
+import { IExerciseCategory, IDiet,ISupplement, IUserProfileList } from '../shared/models/models';
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,9 +15,11 @@ export class AdminPanelComponent implements OnInit {
   public exerciseCategoryName = "";
 
   public diets: IDiet[];
+  public supplements: ISupplement[];
   public dietName = "";
   public dietDescription = "";
-
+  public supplementName = "";
+  public supplementDescription = "";
   public manipulateExCatPressed = false;  
   public manipulateSupplementPressed = false;
   public maniplateDietsPressed = false;
@@ -33,7 +35,22 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit() {
     this.getDietsList();
+    this.getSupplementsList();
     this.getExerciseCategoryList();
+  }
+  manipulateSupplements(){
+    this.manipulateSupplementPressed = !this.manipulateSupplementPressed;
+    this.manipulateExCatPressed = false;
+    this.maniplateDietsPressed = false;
+    this.updateExerciseCategoryPressed = false;
+    this.updateSupplementPressed = false;
+    this.updateDietPressed = false; 
+    this.updateExercisePressed = false;
+    this.manipulateExercisePressed = false;
+    this.showUserListPressed = false;
+    this.targetExCategory = null;
+    this.targetExercise=null;
+    this.targetExerciseId = 0;
   }
 
   manipulateDiets(){
@@ -57,6 +74,12 @@ export class AdminPanelComponent implements OnInit {
     })
   }
 
+  getSupplementsList(){
+    this.provider.getSupplements().then(res=>{
+      this.supplements = res;
+    })
+  }
+
   getExerciseCategoryList(){
     this.provider.getExerciseCategories().then(res=>{
       this.exerciseCategories = res;
@@ -74,6 +97,10 @@ export class AdminPanelComponent implements OnInit {
         this.exerciseCategoryName ='';
       })
     }
+  }
+
+  showSupplement(){
+    this.updateSupplementPressed =!this.updateSupplementPressed;
   }
 
   updateExerciseCategory(exerciseCategory: IExerciseCategory){
@@ -112,10 +139,28 @@ export class AdminPanelComponent implements OnInit {
     }
   }
 
+  createSupplement(){
+    if(this.supplementName!==""){
+      this.provider.createNewSupplement(this.supplementName, this.supplementDescription).then(res=>{
+        this.supplements.push(res);
+        this.supplementName="";
+        this.supplementDescription ="";
+      })
+    }
+  }
+
   updateDiet(diet: IDiet){
     this.provider.updateDiet(diet).then(res=>{
       this.provider.getDiets().then(r=>{
         this.diets = r;
+      })
+    })
+  }
+
+  updateSupplement(supplement: ISupplement){
+    this.provider.updateSupplement(supplement).then(res=>{
+      this.provider.getSupplements().then(r=>{
+        this.supplements = r;
       })
     })
   }
@@ -128,4 +173,11 @@ export class AdminPanelComponent implements OnInit {
     })
   }
 
+  deleteThisSupplement(supplement: ISupplement){
+    this.provider.deleteSupplement(supplement).then(res=>{
+      this.provider.getSupplements().then(r=>{
+        this.supplements = r;
+      })
+    })
+  }
 }

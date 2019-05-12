@@ -92,6 +92,11 @@ export class ProviderService extends MainService{
   }
 
   // Admin Panel
+  deleteSupplement(supplement: ISupplement):Promise<any>{
+    return this.delet('http://localhost:8000/api/supplement/'+supplement.id+"/",{})
+  }
+  
+  // Admin Panel
   updateDiet(diet: IDiet):Promise<IDiet>{
     return this.put('http://localhost:8000/api/diet/' + diet.id + "/",{
       title: diet.title,
@@ -100,8 +105,24 @@ export class ProviderService extends MainService{
   }
 
   // Admin Panel
+  updateSupplement(supplement: ISupplement):Promise<ISupplement>{
+    return this.put('http://localhost:8000/api/supplement/'+supplement.id+"/",{
+      title: supplement.title,
+      description: supplement.description
+    })
+  }
+
+  // Admin Panel
   createNewDiet(title: any, description: any):Promise<IDiet>{
     return this.post('http://localhost:8000/api/diet/',{
+      title: title,
+      description: description
+    })
+  }
+
+  // Admin Panel
+  createNewSupplement(title: any, description: any):Promise<ISupplement>{
+    return this.post('http://localhost:8000/api/supplement/',{
       title: title,
       description: description
     })

@@ -12,6 +12,7 @@ export interface IAuthResponse{
 }
 
 export interface ISupplement{
+    id:number,
     title: string,
     description: string
 }
