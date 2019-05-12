@@ -1,20 +1,35 @@
-<input type="text" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName">
-<button (click)="createExerciseCategory()">Create Exercise Category</button><br>
+<div class="admin__buttons">
+  <button (click)="manipulateDiets()">Diets</button>
+  <button (click)="showUsersList()">Userlist</button>
+</div>
 
-Exercise Categories List<br>
+<ng-container *ngIf="showUserListPressed">
+  <div *ngFor="let user of userlist">
+    {{user.username}}
+    {{user.email}}
+    {{user.is_superuser}}
+  </div>
+</ng-container>
 
-<div class="exercise__categories">
-  <div *ngFor = "let excategory of exerciseCategories">
-    <ng-container *ngIf="updateExerciseCategoryPressed">
-      <input type="text" [(ngModel)] ="excategory.name">
-      <button (click)="updateExerciseCategory(excategory)">Save To Backend</button>
-      <button (click)="deleteExerciseCategory(excategory)">Delete On Backend</button>
+<ng-container *ngIf="maniplateDietsPressed">
+  <input type="text" [(ngModel)]="dietName">
+  <input type="text" [(ngModel)]="dietDescription">
+  <button (click)="createDiet()">Create Diet</button><br>
+
+  Diets List:<br>
+  <div *ngFor="let diet of diets">
+    <ng-container *ngIf="updateDietPressed">
+      <input type="text" [(ngModel)]="diet.title">
+      <input type="text" [(ngModel)]="diet.description">
+      <button (click)="updateDiet(diet)">Save To Backend</button>
+      <button (click)="deleteDiet(diet)">Delete From Backend</button>
     </ng-container>
 
-    <ng-container *ngIf="!updateExerciseCategoryPressed">
-      <div>{{excategory.name}}</div>
+    <ng-container *ngIf="!updateDietPressed">
+      <div>{{diet.title}}</div>
+      <div>{{diet.description}}</div>
     </ng-container>
   </div>
-  <button *ngIf="!updateExerciseCategoryPressed" (click)="showExerciseCategories()">Update Exercise Categories</button>
-  <button *ngIf="updateExerciseCategoryPressed" (click)="getExerciseCategoryList()" (click)="showExerciseCategories()">Back To List</button>
-</div>
+  <button *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
+  <button *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
+</ng-container>

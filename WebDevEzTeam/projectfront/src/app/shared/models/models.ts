@@ -18,7 +18,8 @@ export interface ISupplement{
 
 export interface IDiet{
     title: string,
-    description: string
+    description: string,
+    id: number
 }
 
 export interface IRegResponse{
@@ -40,4 +41,11 @@ export interface IProfile{
     overall_body_test: number,
     allergies: string,
     blood_pressure: string,
+}
+
+export interface IUserProfileList{
+    id: number,
+    username: string,
+    email: string,
+    is_superuser: string
 }

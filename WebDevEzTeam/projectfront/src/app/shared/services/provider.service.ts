@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { MainService } from './main.service';
 import { HttpClient } from '@angular/common/http';
-import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile } from '../models/models';
+import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile, IUserProfileList } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -68,15 +68,15 @@ export class ProviderService extends MainService{
   }
 
   deleteExerciseCategory(exerciseCategory: IExerciseCategory):Promise<IExerciseCategory>{
-    return this.delet('http://localhost:8000/api/exercise_category/'+exerciseCategory.id+'/',{})
+    return this.delet('http://localhost:8000/api/exercise_category/' + exerciseCategory.id + '/',{})
   }
 
   accessProfile(userId: any):Promise<IProfile>{
-    return this.get('http://localhost:8000/api/profile/'+userId+"/",{})
+    return this.get('http://localhost:8000/api/profile/' + userId + "/",{})
   }
 
   changeProfile(userId: any, first_name: any, second_name:any, task_count:any, overall_body_test:any, allergies:any, blood_pressure: any):Promise<IProfile>{
-    return this.put('http://localhost:8000/api/profile/'+userId+"/",{
+    return this.put('http://localhost:8000/api/profile/' + userId + "/",{
       first_name: first_name,
       second_name: second_name,
       task_count: task_count,
@@ -85,4 +85,31 @@ export class ProviderService extends MainService{
       blood_pressuer: blood_pressure
     })
   }
+  
+  // Admin Panel
+  deleteDiet(diet: IDiet):Promise<any>{
+    return this.delet('http://localhost:8000/api/diet/'+ diet.id + "/",{})
+  }
+
+  // Admin Panel
+  updateDiet(diet: IDiet):Promise<IDiet>{
+    return this.put('http://localhost:8000/api/diet/' + diet.id + "/",{
+      title: diet.title,
+      description: diet.description
+    })
+  }
+
+  // Admin Panel
+  createNewDiet(title: any, description: any):Promise<IDiet>{
+    return this.post('http://localhost:8000/api/diet/',{
+      title: title,
+      description: description
+    })
+  }
+
+  // Admin Panel
+  getUserList():Promise<IUserProfileList[]>{
+    return this.get('http://localhost:8000/api/users/',{})
+  }
+
 }

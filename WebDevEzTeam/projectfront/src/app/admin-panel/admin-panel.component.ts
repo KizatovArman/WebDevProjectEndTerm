@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../shared/services/provider.service';
-import { IExerciseCategory } from '../shared/models/models';
+import { IExerciseCategory, IDiet, IUserProfileList } from '../shared/models/models';
 
 @Component({
   selector: 'app-admin-panel',
@@ -12,14 +12,49 @@ export class AdminPanelComponent implements OnInit {
   constructor(private provider: ProviderService) { }
 
   public exerciseCategories: IExerciseCategory[];
-  public updateExerciseCategoryPressed = false;
-
   public exerciseCategoryName = "";
 
+  public diets: IDiet[];
+  public dietName = "";
+  public dietDescription = "";
 
+  public manipulateExCatPressed = false;  
+  public manipulateSupplementPressed = false;
+  public maniplateDietsPressed = false;
+  public manipulateExercisePressed = false;
+  public showUserListPressed = false;
+
+  public updateExerciseCategoryPressed = false;
+  public updateSupplementPressed=false;
+  public updateDietPressed = false;
+  public updateExercisePressed= false;
+
+  public userlist: IUserProfileList[];
 
   ngOnInit() {
+    this.getDietsList();
     this.getExerciseCategoryList();
+  }
+
+  manipulateDiets(){
+    this.maniplateDietsPressed = !this.maniplateDietsPressed;
+    this.manipulateExCatPressed = false;
+    this.manipulateSupplementPressed = false;
+    this.updateExerciseCategoryPressed = false;
+    this.updateSupplementPressed = false;
+    this.updateDietPressed = false; 
+    this.updateExercisePressed = false;
+    this.manipulateExercisePressed = false;
+    this.showUserListPressed = false;
+    this.targetExCategory = null;
+    this.targetExercise = null;
+    this.targetExerciseId = 0;
+  }
+
+  getUsersList(){
+    this.provider.getUserList().then(res=>{
+      this.userlist = res;
+    })
   }
 
   getExerciseCategoryList(){
@@ -56,4 +91,41 @@ export class AdminPanelComponent implements OnInit {
       })
     })
   }
+
+  getDietsList(){
+    this.provider.getDiets().then(res=>{
+      this.diets = res;
+    })
+  }
+
+  showDiet(){
+    this.updateDietPressed = !this.updateDietPressed;
+  }
+
+  createDiet(){
+    if(this.dietName !==''){
+      this.provider.createNewDiet(this.dietName, this.dietDescription).then(res=>{
+        this.diets.push(res);
+        this.dietName="";
+        this.dietDescription="";
+      })
+    }
+  }
+
+  updateDiet(diet: IDiet){
+    this.provider.updateDiet(diet).then(res=>{
+      this.provider.getDiets().then(r=>{
+        this.diets = r;
+      })
+    })
+  }
+
+  deleteDiet(diet: IDiet){
+    this.provider.deleteDiet(diet).then(res=>{
+      this.provider.getDiets().then(r=>{
+        this.diets = r;
+      })
+    })
+  }
+
 }
