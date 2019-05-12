@@ -2,7 +2,7 @@ export interface ITask{
     id:number,
     name:string,
     status:string,
-    created_at:string,
+    created_at:Date,
 }
 
 export interface IAuthResponse{
@@ -12,11 +12,13 @@ export interface IAuthResponse{
 }
 
 export interface ISupplement{
+    id: number,
     title: string,
     description: string
 }
 
 export interface IDiet{
+    id: number,
     title: string,
     description: string
 }
@@ -40,4 +42,19 @@ export interface IProfile{
     overall_body_test: number,
     allergies: string,
     blood_pressure: string,
+}
+
+export interface IUserProfileList{
+    id: number,
+    username: string,
+    email: string,
+    is_superuser: string
+}
+
+export interface IExercise{
+    id: number,
+    title: string,
+    photo_link: string,
+    equipment_needed: string,
+    how_to_do_tips:string
 }

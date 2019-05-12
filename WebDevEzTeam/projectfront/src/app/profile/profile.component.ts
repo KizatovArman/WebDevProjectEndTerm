@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
     }
     this.watchMyProfile(this.user_id)
     // console.log(this.user_id)
-    console.log(this.firstName)
+    // console.log(this.firstName)
   }
 
   showProfile(){

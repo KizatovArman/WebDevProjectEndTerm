@@ -1,0 +1,38 @@
+
+.footer{
+    padding-left: 0px;
+    padding-bottom: 0px;
+    
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    color: rgb(226, 219, 219);
+    text-align: center;
+}
+
+.footer ul li{
+    margin: 0 auto;
+    list-style: none;
+    display: block;
+    float: left;
+    text-align: center;
+}
+.footer ul a {
+    color: darkseagreen;
+    text-decoration: none;
+    
+}
+.footer ul a:hover{
+    color: rgb(81,248,81);
+}
+
+.footer ul .after_email{
+    margin-left: 80px;
+}
+
+.footer ul .contact_email{
+    margin-left: 250px;
+
+}

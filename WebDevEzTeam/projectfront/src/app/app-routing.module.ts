@@ -10,6 +10,8 @@ import { SupplementInfoComponent } from './supplement-info/supplement-info.compo
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { TestComponent } from './test/test.component';
+import { TaskComponent } from './task/task.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,14 @@ const routes: Routes = [
   {
     path:'adminpanel',
     component:AdminPanelComponent
+  },
+  {
+    path:'test',
+    component: TestComponent
+  },
+  {
+    path:'tasks',
+    component:TaskComponent
   }
   // {
   // },

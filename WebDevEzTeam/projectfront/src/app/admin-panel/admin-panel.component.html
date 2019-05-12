@@ -1,20 +1,54 @@
-<input type="text" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName">
-<button (click)="createExerciseCategory()">Create Exercise Category</button><br>
-
-Exercise Categories List<br>
-
-<div class="exercise__categories">
-  <div *ngFor = "let excategory of exerciseCategories">
-    <ng-container *ngIf="updateExerciseCategoryPressed">
-      <input type="text" [(ngModel)] ="excategory.name">
-      <button (click)="updateExerciseCategory(excategory)">Save To Backend</button>
-      <button (click)="deleteExerciseCategory(excategory)">Delete On Backend</button>
-    </ng-container>
-
-    <ng-container *ngIf="!updateExerciseCategoryPressed">
-      <div>{{excategory.name}}</div>
-    </ng-container>
-  </div>
-  <button *ngIf="!updateExerciseCategoryPressed" (click)="showExerciseCategories()">Update Exercise Categories</button>
-  <button *ngIf="updateExerciseCategoryPressed" (click)="getExerciseCategoryList()" (click)="showExerciseCategories()">Back To List</button>
+<div class="admin__buttons">
+  <button (click)="manipulateExerciseCategories()">Exercise Categories</button>  
 </div>
+
+
+<ng-container *ngIf="manipulateExCatPressed">
+    <input type="text" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName">
+    <button (click)="createExerciseCategory()">Create Exercise Category</button><br>
+    
+    Exercise Categories List:<br>
+    
+    <div class="exercise__categories">
+      <div *ngFor = "let excategory of exerciseCategories">
+        <ng-container *ngIf="updateExerciseCategoryPressed">
+          <input type="text" [(ngModel)] ="excategory.name">
+          <button (click)="updateExerciseCategory(excategory)">Save To Backend</button>
+          <button (click)="deleteExerciseCategory(excategory)">Delete From Backend</button>
+        </ng-container>
+    
+        <ng-container *ngIf="!updateExerciseCategoryPressed">
+          <button (click)="manipulateExercises(excategory)" (click)="getExercisesList(excategory.id)">{{excategory.id}}: {{excategory.name}}</button>
+        </ng-container>
+      </div>
+      <button *ngIf="!updateExerciseCategoryPressed" (click)="showExerciseCategories()">Update Exercise Categories</button>
+      <button *ngIf="updateExerciseCategoryPressed" (click)="getExerciseCategoryList()" (click)="showExerciseCategories()">Back To List</button>
+    </div>
+    
+    <div *ngIf="targetExCategory">
+      <p>Pleas fill all fields to create Exercise</p><br>
+      <input type="text" placeholder="Exercise Title" [(ngModel)]="exerciseName">
+      <input type="text" placeholder="Exercise Photo Link" [(ngModel)]="exerciseLink">
+      <input type="text" placeholder="Exercise Equipment Needed" [(ngModel)]="exerciseEquipment">
+      <input type="text" placeholder="Exercise How Todo Tips" [(ngModel)]="exerciseHowTodo">
+      <button (click)="createExercise(targetExCategory)">Create Exercise</button>
+      Exercises:<br>
+      <ng-container *ngFor="let exercise of exercises">
+        <ng-container *ngIf="targetExerciseId != exercise.id"> 
+            {{exercise.title}}<br>
+            {{exercise.photo_link}}<br>
+            {{exercise.equipment_needed}}<br>
+            {{exercise.how_to_do_tips}}<br>
+            <button (click)="chooseExercise(exercise)">Update Exercise</button><br>
+        </ng-container >
+        <ng-container *ngIf="exercise.id == targetExerciseId">
+          <input type="text" [(ngModel)]="exercise.title">
+          <input type="text" [(ngModel)]="exercise.photo_link">
+          <input type="text" [(ngModel)]="exercise.equipment_needed">
+          <input type="text" [(ngModel)]="exercise.how_to_do_tips">
+          <button (click)="updateExercise(targetExCategory, targetExercise)">Save To Backend</button>
+          <button (click)="deleteExercise(targetExCategory, targetExercise)">Delete From Backend</button><br>
+        </ng-container>
+      </ng-container>
+    </div>
+</ng-container>

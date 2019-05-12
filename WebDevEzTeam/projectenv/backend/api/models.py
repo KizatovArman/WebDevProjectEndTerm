@@ -31,10 +31,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     second_name = models.CharField(max_length=255)
-    task_count = models.IntegerField(default=None, null=True)
-    overall_body_test = models.IntegerField(default=None, null=True)
-    allergies = models.CharField(default=None, null=True, max_length=100)
-    blood_pressure = models.CharField(default=None, null=True, max_length=100)
+    task_count = models.IntegerField(default=0)
+    overall_body_test = models.FloatField(default=0.0)
+    allergies = models.CharField(default="No Info", max_length=100)
+    blood_pressure = models.CharField(default="No Info", max_length=100)
 
     class Meta:
         verbose_name = 'Profile'
@@ -64,8 +64,8 @@ class Diets(models.Model):
 
 # Supplement Model
 class Supplement(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.CharField(max_length=1500)
+    title = models.CharField(max_length=255, default="")
+    description = models.CharField(max_length=1500, default="")
 
     class Meta:
         verbose_name = 'Supplement'
@@ -81,6 +81,11 @@ class ExerciseCategory(models.Model):
         verbose_name_plural = "Exercise Categories"
 
 
+class ExercisesManager(models.Manager):
+    def for_user(self, pk1, pk2, user):
+        return ExerciseCategory.objects.get(id=pk1).exercises_set.get(id=pk2)
+
+
 # Exercise Model
 class Exercise(models.Model):
     title = models.CharField(max_length=255)
@@ -88,6 +93,7 @@ class Exercise(models.Model):
     equipment_needed = models.CharField(max_length=255)
     how_to_do_tips = models.CharField(max_length=1500)
     exercise_category = models.ForeignKey(ExerciseCategory, on_delete=models.CASCADE)
+    objects = ExercisesManager()
 
     class Meta:
         verbose_name = 'Exercise'

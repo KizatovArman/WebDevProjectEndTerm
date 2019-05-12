@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django-filter',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -113,6 +114,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
+    'PAGE_SIZE': 3
     # 'DEFAULT_PERMISSION_CLASSES': (
     #     'rest_framework.permissions.AllowAny',
     #     'rest_framework.permissions.IsAdminUser',

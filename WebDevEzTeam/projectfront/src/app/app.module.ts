@@ -18,6 +18,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './AuthInterceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { TestComponent } from './test/test.component';
+import { TaskComponent } from './task/task.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     ResetPasswordComponent,
     ProfileComponent,
     AdminPanelComponent,
+    TestComponent,
+    TaskComponent,
+    FooterComponent,
   ],
   imports: [
     FormsModule,

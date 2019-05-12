@@ -1,5 +1,23 @@
 <div class="exercise__categories">
   <div *ngFor = "let excategory of exerciseCategories">
-    <p>{{excategory.name}}</p>
+    <div>
+        <button (click)="showExercises(excategory)" (click)="getExercises(excategory)">{{excategory.name}}</button>
+    </div>
+  </div>
+</div>
+<div class="temp">
+  <div *ngIf="targetExCat">
+      <div *ngFor="let exercise of exercises">
+        <button (click)="chooseExercise(exercise)" (click)="getExerciseDetail(targetExCat, exercise)">{{exercise.title}}</button>
+      </div>
+      <button (click)="hideExercises()">Back</button>
+  </div>
+  <div *ngIf="targetExCat">
+    <div *ngIf="targetExercise">
+      {{resultExercise.title}}<br>
+      <img [src]='resultExercise.photo_link' alt="">
+      {{resultExercise.equipment_needed}}<br>
+      {{resultExercise.how_to_do_tips}}
+    </div>
   </div>
 </div>

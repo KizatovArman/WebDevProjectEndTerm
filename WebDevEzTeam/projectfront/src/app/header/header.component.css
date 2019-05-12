@@ -1,3 +1,6 @@
+header{
+    z-index: 20;
+}
 body{
     margin: 0;
     padding: 0;
@@ -94,45 +97,6 @@ header nav input{
    /*height: 38.4px;*/
     border-radius: 5px;
 }
-.footer{
-    padding-left: 0px;
-    padding-bottom: 10px;
-    
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    background-color: black;
-    color: rgb(226, 219, 219);
-    text-align: center;
-}
-
-.footer ul li{
-    margin: 0 auto;
-    list-style: none;
-    display: block;
-    float: left;
-    text-align: center;
-}
-.footer ul a {
-    color: darkseagreen;
-    text-decoration: none;
-    
-}
-.footer ul a:hover{
-    color: rgb(81,248,81);
-}
-
-.footer ul .after_email{
-    margin-left: 80px;
-}
-
-.footer ul .contact_email{
-    margin-left: 250px;
-
-}
-
 .remove__login{
     display: none;
 }

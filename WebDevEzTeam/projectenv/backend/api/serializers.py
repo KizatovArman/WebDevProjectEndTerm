@@ -23,12 +23,12 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     user = UserSerializer(read_only=True)
-    first_name = serializers.CharField()
-    second_name = serializers.CharField()
-    task_count = serializers.IntegerField()
-    overall_body_test = serializers.IntegerField()
-    allergies = serializers.CharField()
-    blood_pressure = serializers.CharField()
+    first_name = serializers.CharField(required=False, allow_blank=True, default='')
+    second_name = serializers.CharField(required=False, allow_blank=True, default='')
+    task_count = serializers.IntegerField(required=False, default=0)
+    overall_body_test = serializers.FloatField(required=False, default=0)
+    allergies = serializers.CharField(required=False, allow_blank=True, default='')
+    blood_pressure = serializers.CharField(required=False, allow_blank=True, default='')
 
     class Meta:
         model = Profile
@@ -76,8 +76,8 @@ class TaskSerializer(serializers.ModelSerializer):
 # Supplement Serializer
 class SupplementSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField()
-    description = serializers.CharField()
+    title = serializers.CharField(required=True)
+    description = serializers.CharField(required=False, allow_blank=True, default='')
 
     def create(self, validated_data):
         supplement = Supplement(**validated_data)
@@ -117,13 +117,17 @@ class ExerciseCategorySerializer(serializers.ModelSerializer):
 
 
 # Exercise Serializer
-class ExerciseSerializer(serializers.Serializer):
+class ExerciseSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=255)
     photo_link = serializers.CharField(max_length=255)
     equipment_needed = serializers.CharField(max_length=255)
-    how_to_do_tips = serializers.CharField(max_length=255)
-    exercise_category = ExerciseCategorySerializer()
+    how_to_do_tips = serializers.CharField(max_length=1500)
+    exercise_category = ExerciseCategorySerializer(required=False)
+
+    class Meta:
+        model = Exercise
+        fields = '__all__'
 
     def create(self, validated_data):
         return Exercise.objects.create(**validated_data)
@@ -133,6 +137,5 @@ class ExerciseSerializer(serializers.Serializer):
         instance.photo_link = validated_data.get('photo_link', instance.photo_link)
         instance.equipment_needed = validated_data.get('equipment_needed',instance.equipment_needed)
         instance.how_to_do_tips = validated_data.get('how_to_do_tips', instance.how_to_do_tips)
-        instance.exercise_category = validated_data.get('exercise_category', instance.exercise_category)
         instance.save()
         return instance

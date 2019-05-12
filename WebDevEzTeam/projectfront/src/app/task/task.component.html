@@ -1,0 +1,24 @@
+<div class="create__newtask">
+  <input type="text" placeholder="Name" [(ngModel)]="nameOfTask">
+  <input type="text" placeholder="Status" [(ngModel)]="statusOfTask">
+  <button (click)="createNewTask()" (click)="increaseTasknumber()">Add New Task</button>
+</div>
+<div class="tasks">
+  <div *ngFor="let task of tasks">
+    <div class="task">
+        <ng-container *ngIf="task.id !== cur_task_id">
+          <p>{{task.name}}</p>
+          <p>{{task.created_at}}</p>
+          <p>{{task.status}}</p>
+          <button (click)="chooseTask(task)">Update</button>
+          <button (click)="deleteTask(task)">Delete</button>
+        </ng-container>
+        <ng-container *ngIf="task.id == cur_task_id">
+          <input type="text" [(ngModel)] ="task.name">
+          <p>{{task.created_at}}</p>
+          <input type="text" [(ngModel)]="task.status">
+          <button (click)="updateTaskI(task)">Save</button>
+        </ng-container>
+    </div>
+  </div>
+</div>
