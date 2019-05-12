@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../shared/services/provider.service';
-<<<<<<< HEAD
 import { IExerciseCategory, ISupplement, IDiet, IUserProfileList, IExercise } from '../shared/models/models';
-=======
-import { IExerciseCategory, IDiet,ISupplement, IUserProfileList } from '../shared/models/models';
->>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
 
 @Component({
   selector: 'app-admin-panel',
@@ -16,7 +12,9 @@ export class AdminPanelComponent implements OnInit {
   constructor(private provider: ProviderService) { }
 
   public exerciseCategories: IExerciseCategory[];
-<<<<<<< HEAD
+  public supplements: ISupplement[];
+  public diets: IDiet[];
+  public userlist: IUserProfileList[];
   public exercises: IExercise[];
   public targetExCategory: IExerciseCategory;
   public targetExercise: IExercise;
@@ -27,9 +25,9 @@ export class AdminPanelComponent implements OnInit {
   public updateDietPressed = false;
   public updateExercisePressed= false;
 
-=======
->>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
   public exerciseCategoryName = "";
+  public supplementName = "";
+  public supplementDescription = "";
   public dietName = "";
   public dietDescription = "";
   public exerciseName="";
@@ -37,36 +35,16 @@ export class AdminPanelComponent implements OnInit {
   public exerciseEquipment="";
   public exerciseHowTodo="";
 
-<<<<<<< HEAD
   public manipulateExCatPressed = false;
-=======
-  public diets: IDiet[];
-  public supplements: ISupplement[];
-  public dietName = "";
-  public dietDescription = "";
-  public supplementName = "";
-  public supplementDescription = "";
-  public manipulateExCatPressed = false;  
->>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
   public manipulateSupplementPressed = false;
   public maniplateDietsPressed = false;
   public manipulateExercisePressed = false;
   public showUserListPressed = false;
-<<<<<<< HEAD
-=======
-
-  public updateExerciseCategoryPressed = false;
-  public updateSupplementPressed=false;
-  public updateDietPressed = false;
-  public updateExercisePressed= false;
-
-  public userlist: IUserProfileList[];
->>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
 
   ngOnInit() {
-    this.getDietsList();
-    this.getSupplementsList();
     this.getExerciseCategoryList();
+    this.getSupplementsList();
+    this.getDietsList();
     this.getUsersList();
   }
 
@@ -112,33 +90,6 @@ export class AdminPanelComponent implements OnInit {
     this.targetExerciseId = 0;
   }
 
-
-  getUsersList(){
-    this.provider.getUserList().then(res=>{
-      this.userlist = res;
-    })
-  }
-
-  getExercisesList(id: number){
-    this.provider.getExercisesAdminOnly(id).then(res=>{
-      this.exercises = res;
-    })
-  }
-  manipulateSupplements(){
-    this.manipulateSupplementPressed = !this.manipulateSupplementPressed;
-    this.manipulateExCatPressed = false;
-    this.maniplateDietsPressed = false;
-    this.updateExerciseCategoryPressed = false;
-    this.updateSupplementPressed = false;
-    this.updateDietPressed = false; 
-    this.updateExercisePressed = false;
-    this.manipulateExercisePressed = false;
-    this.showUserListPressed = false;
-    this.targetExCategory = null;
-    this.targetExercise=null;
-    this.targetExerciseId = 0;
-  }
-
   manipulateDiets(){
     this.maniplateDietsPressed = !this.maniplateDietsPressed;
     this.manipulateExCatPressed = false;
@@ -150,7 +101,22 @@ export class AdminPanelComponent implements OnInit {
     this.manipulateExercisePressed = false;
     this.showUserListPressed = false;
     this.targetExCategory = null;
-    this.targetExercise = null;
+    this.targetExercise=null;
+    this.targetExerciseId = 0;
+  }
+
+  showUsersList(){
+    this.showUserListPressed = !this.showUserListPressed;
+    this.manipulateExCatPressed = false;
+    this.maniplateDietsPressed = false;
+    this.manipulateSupplementPressed = false;
+    this.updateExerciseCategoryPressed = false;
+    this.updateSupplementPressed = false;
+    this.updateExercisePressed = false;
+    this.manipulateExercisePressed = false;
+    this.updateDietPressed = false;
+    this.targetExCategory = null;
+    this.targetExercise=null;
     this.targetExerciseId = 0;
   }
 
@@ -166,9 +132,21 @@ export class AdminPanelComponent implements OnInit {
     })
   }
 
+  getExercisesList(id: number){
+    this.provider.getExercisesAdminOnly(id).then(res=>{
+      this.exercises = res;
+    })
+  }
+
   getExerciseCategoryList(){
     this.provider.getExerciseCategories().then(res=>{
       this.exerciseCategories = res;
+    })
+  }
+
+  getDietsList(){
+    this.provider.getDiets().then(res=>{
+      this.diets = res;
     })
   }
 
@@ -178,7 +156,12 @@ export class AdminPanelComponent implements OnInit {
     this.targetExCategory = null;
     this.targetExerciseId = 0;
   }
-  
+  showSupplement(){
+    this.updateSupplementPressed =!this.updateSupplementPressed;
+  }
+  showDiet(){
+    this.updateDietPressed = !this.updateDietPressed;
+  }
   showExercises(){
     this.updateExercisePressed = !this.updateExercisePressed;
   }
@@ -202,67 +185,6 @@ export class AdminPanelComponent implements OnInit {
     }
   }
 
-
-  createExerciseCategory(){
-    if(this.exerciseCategoryName !==''){
-      this.provider.createNewExerciseCategory(this.exerciseCategoryName).then(res=>{
-        this.exerciseCategories.push(res)
-        this.exerciseCategoryName ='';
-      })
-    }
-  }
-
-<<<<<<< HEAD
-  updateExercise(excat: IExerciseCategory, ex: IExercise){
-    if(ex.title !=='' && ex.photo_link !=='' && ex.equipment_needed !=='' && ex.how_to_do_tips !==''){
-      this.provider.updateExercise(excat,ex).then(res=>{
-        this.provider.getExercisesAdminOnly(excat.id).then(r=>{
-          this.exercises = r;
-          this.targetExerciseId = 0;
-        })
-      })
-    }
-=======
-  showSupplement(){
-    this.updateSupplementPressed =!this.updateSupplementPressed;
->>>>>>> ee5f31b127549a14a1b729feb98984ec758e31ea
-  }
-
-  updateExerciseCategory(exerciseCategory: IExerciseCategory){
-    this.provider.updateExerciseCategory(exerciseCategory).then(res=>{
-      this.provider.getExerciseCategories().then(r=>{
-        this.exerciseCategories = r;
-      })
-    })
-  }
-
-  deleteExercise(excat: IExerciseCategory, ex: IExercise){
-    this.provider.deleteExercise(excat, ex).then(res=>{
-      this.provider.getExercisesAdminOnly(excat.id).then(r=>{
-        this.exercises = r;
-        this.targetExerciseId = 0;
-      })
-    })
-  }
-
-  deleteExerciseCategory(exerciseCategory: IExerciseCategory){
-    this.provider.deleteExerciseCategory(exerciseCategory).then(res=>{
-      this.provider.getExerciseCategories().then(r=>{
-        this.exerciseCategories = r;
-      })
-    })
-  }
-
-  getDietsList(){
-    this.provider.getDiets().then(res=>{
-      this.diets = res;
-    })
-  }
-
-  showDiet(){
-    this.updateDietPressed = !this.updateDietPressed;
-  }
-
   createDiet(){
     if(this.dietName !==''){
       this.provider.createNewDiet(this.dietName, this.dietDescription).then(res=>{
@@ -283,6 +205,26 @@ export class AdminPanelComponent implements OnInit {
     }
   }
 
+  createExerciseCategory(){
+    if(this.exerciseCategoryName !==''){
+      this.provider.createNewExerciseCategory(this.exerciseCategoryName).then(res=>{
+        this.exerciseCategories.push(res)
+        this.exerciseCategoryName ='';
+      })
+    }
+  }
+
+  updateExercise(excat: IExerciseCategory, ex: IExercise){
+    if(ex.title !=='' && ex.photo_link !=='' && ex.equipment_needed !=='' && ex.how_to_do_tips !==''){
+      this.provider.updateExercise(excat,ex).then(res=>{
+        this.provider.getExercisesAdminOnly(excat.id).then(r=>{
+          this.exercises = r;
+          this.targetExerciseId = 0;
+        })
+      })
+    }
+  }
+
   updateDiet(diet: IDiet){
     this.provider.updateDiet(diet).then(res=>{
       this.provider.getDiets().then(r=>{
@@ -299,6 +241,23 @@ export class AdminPanelComponent implements OnInit {
     })
   }
 
+  updateExerciseCategory(exerciseCategory: IExerciseCategory){
+    this.provider.updateExerciseCategory(exerciseCategory).then(res=>{
+      this.provider.getExerciseCategories().then(r=>{
+        this.exerciseCategories = r;
+      })
+    })
+  }
+
+  deleteExercise(excat: IExerciseCategory, ex: IExercise){
+    this.provider.deleteExercise(excat, ex).then(res=>{
+      this.provider.getExercisesAdminOnly(excat.id).then(r=>{
+        this.exercises = r;
+        this.targetExerciseId = 0;
+      })
+    })
+  }
+
   deleteDiet(diet: IDiet){
     this.provider.deleteDiet(diet).then(res=>{
       this.provider.getDiets().then(r=>{
@@ -311,6 +270,14 @@ export class AdminPanelComponent implements OnInit {
     this.provider.deleteSupplement(supplement).then(res=>{
       this.provider.getSupplements().then(r=>{
         this.supplements = r;
+      })
+    })
+  }
+
+  deleteExerciseCategory(exerciseCategory: IExerciseCategory){
+    this.provider.deleteExerciseCategory(exerciseCategory).then(res=>{
+      this.provider.getExerciseCategories().then(r=>{
+        this.exerciseCategories = r;
       })
     })
   }
