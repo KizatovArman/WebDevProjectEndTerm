@@ -22,10 +22,10 @@ const routes: Routes = [
     path: "",
     component: TitlePageComponent,
   },
-  {
-    path:'work-on-yourself',
-    component: WorkOnYourselfComponent,
-  },
+  // {
+  //   path:'work-on-yourself',
+  //   component: WorkOnYourselfComponent,
+  // },
   {
     path:'dietary',
     component:DietaryComponent,

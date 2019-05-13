@@ -4,7 +4,8 @@
     background-repeat: no-repeat;
     background-position: fixed;
     background-attachment: fixed;
-    height: 1200px;
+    /* height: 3000px; */
+    height: 100%;
     overflow: hidden;
     font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
   }
@@ -12,3 +13,8 @@
   p {
       color: white;
   }
+
+  
+.users:last-child {
+    margin-bottom: 4%; 
+}

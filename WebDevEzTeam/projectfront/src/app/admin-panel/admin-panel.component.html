@@ -16,7 +16,7 @@
       </div>
       
       <ng-container *ngIf="showUserListPressed">
-        <div *ngFor="let user of userlist" style="margin-left: 61.5%;">
+        <div class="users" *ngFor="let user of userlist" style="margin-left: 61.5%;">
           <br><br>
             <div style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;"><button class="btn btn-info" style="width: 150px;">Username:</button> {{user.username}} </div>
       
@@ -28,8 +28,8 @@
       </ng-container>
       
       <ng-container *ngIf="manipulateExCatPressed">
-          <div class="input-group mb-3" style="margin-top: 2%;">
-              <input type="text" class="form-control" style="width: 380px" placeholder="Enter exercise category" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName"> <br> <br>
+          <div style="margin-top: 2%;">
+              <input type="text" class="form-control" style="width: 380px;"  placeholder="Enter exercise category" name="newExCategory" id="newExCategory" [(ngModel)] = "exerciseCategoryName"> <br> <br>
               <button class="btn btn-primary" (click)="createExerciseCategory()">Create Exercise Category</button><br>
             </div>
           <br>
@@ -61,7 +61,7 @@
             <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise How to do tips" [(ngModel)]="exerciseHowTodo"> <br>
             <button class="btn btn-success" (click)="createExercise(targetExCategory)">Create Exercise</button> <br> <br>
             <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 16px;">Exercises :</p>
-            <ng-container *ngFor="let exercise of exercises">
+            <ng-container class="users" *ngFor="let exercise of exercises">
               <ng-container *ngIf="targetExerciseId != exercise.id"> 
                   <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Exercise Name:</div>
                   <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.title}}</div>
@@ -76,6 +76,7 @@
                   <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.how_to_do_tips}</div>
       
                   <button class="btn btn-warning" (click)="chooseExercise(exercise)">Update Exercise</button><br>
+                  <div class="users"></div>
               </ng-container >
               <ng-container *ngIf="exercise.id == targetExerciseId">
                 <br> <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.title">
@@ -112,8 +113,8 @@
               <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 22.8%;  width: 20.8%">{{sup.description}}</p> <br>
           </ng-container>
         </div>
-        <button class="btn btn-danger" style="margin-left: 22.8%;" *ngIf="!updateSupplementPressed" (click)="showSupplement()">Update Supplements</button>
-        <br> <button class="btn btn-dark" style="margin-left: 22.8%;" *ngIf="updateSupplementPressed" (click)="getSupplementsList()" (click)="showSupplement()">Back To List</button>
+        <button class="btn btn-danger baget" style="margin-left: 22.8%;" *ngIf="!updateSupplementPressed" (click)="showSupplement()">Update Supplements</button>
+        <br> <button class="btn btn-dark baget" style="margin-left: 22.8%;" *ngIf="updateSupplementPressed" (click)="getSupplementsList()" (click)="showSupplement()">Back To List</button>
       </ng-container>
       
       <ng-container *ngIf="maniplateDietsPressed">
@@ -140,8 +141,8 @@
               <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%;  width: 18.8%">{{diet.description}}</p> <br>
           </ng-container>
         </div>
-        <button class="btn btn-danger" style="margin-left: 43.4%"  *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
-        <br> <button class="btn btn-primary" style="margin-left: 43.4%"  *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
+        <button class="btn btn-danger baget" style="margin-left: 43.4%"  *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
+        <br> <button class="btn btn-primary users" style="margin-left: 43.4%"  *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
       </ng-container>
       </div>
 </body>
