@@ -35,10 +35,11 @@ export class LoginComponent implements OnInit {
   auth(){
     if((this.login !=='') && this.password !==''){
       this.provider.login(this.login, this.password).then(res=>{
+        this.logged = true;
         localStorage.setItem('token', res.token);
         localStorage.setItem('userId',res.user_id.toString());
         localStorage.setItem('userName', res.username);
-        this.logged = true;
+        localStorage.setItem('superUser', res.is_superuser);
         window.location.reload();
       });
     }

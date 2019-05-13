@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   public logged = false;
   private userName = "";
   private isadmin = false;
-
+  private issuperuser = "";
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
@@ -21,9 +21,10 @@ export class HeaderComponent implements OnInit {
     if(token){
       this.logged = true;
       this.userName = localStorage.getItem('userName');
-      if(this.userName ==="A_Kizatov"){
-        this.isadmin = true;
-      }
+      this.issuperuser = localStorage.getItem('superUser');
+    }
+    if(this.issuperuser =="true"){
+      this.isadmin = true;
     }
   }
 

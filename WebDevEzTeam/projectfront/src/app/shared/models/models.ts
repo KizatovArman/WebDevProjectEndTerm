@@ -8,7 +8,8 @@ export interface ITask{
 export interface IAuthResponse{
     token: string,
     user_id: number,
-    username: string
+    username: string,
+    is_superuser: string
 }
 
 export interface ISupplement{
