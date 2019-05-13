@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <div class="form-wrapper">
     <form>
       <div>
         <div class="form-group">
@@ -24,9 +25,9 @@
           <div *ngFor="let task of tasks">
             <div class="task">
                 <ng-container *ngIf="task.id !== cur_task_id">
-                  <label for="exampleInputEmail1">Task Name</label><p class="font-weight-light">{{task.name}}</p>
-                  <label for="exampleInputEmail1">Task Created Time</label><p class="font-weight-light">{{task.created_at}}</p>
-                  <label for="exampleInputEmail1">Task Status</label><p class="font-weight-light">{{task.status}}</p>
+                  <label for="exampleInputEmail1">Task Name</label><p class="font-weight-light" style="color:tomato">{{task.name}}</p>
+                  <label for="exampleInputEmail1">Task Created Time</label><p class="font-weight-light" style="color: red">{{task.created_at}}</p>
+                  <label for="exampleInputEmail1">Task Status</label><p class="font-weight-light" style="color:tomato">{{task.status}}</p>
                   <button (click)="chooseTask(task)" class="btn btn-info">Update</button>
                   <button (click)="deleteTask(task)" class="btn btn-danger">Delete</button>
                 </ng-container>
@@ -39,10 +40,14 @@
                       <h4>Task Status</h4>
                     </div>
                   <input type="text" class="form-control" [(ngModel)]="task.status" style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; width: 20%;"> <br>
-                  <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Task created time : {{task.created_at}}</p>
+                  <div class="panel-heading">
+                    <h4>Task created time : </h4>
+                  </div>
+                  <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 13px; color:tomato">{{task.created_at}}</p>
                   <button class="btn btn-danger" (click)="updateTaskI(task)">Save</button>
                 </ng-container>
             </div>
           </div>
+        </div>
         </div>
 </body>

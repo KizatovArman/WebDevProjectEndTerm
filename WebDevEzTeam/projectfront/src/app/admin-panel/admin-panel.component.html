@@ -7,6 +7,7 @@
 
 
 <body>
+    <div class="form-wrapper">
     <div class="admin__buttons">
         <button class="btn btn-primary" (click)="manipulateExerciseCategories()">Exercise Categories</button>
         <button class="btn btn-warning" (click)="manipulateSupplements()" style="margin-left: 15%;">Supplements</button>
@@ -142,5 +143,5 @@
         <button class="btn btn-danger" style="margin-left: 43.4%"  *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>
         <br> <button class="btn btn-primary" style="margin-left: 43.4%"  *ngIf="updateDietPressed" (click)="getDietsList()" (click)="showDiet()">Back To List</button>
       </ng-container>
-      
+      </div>
 </body>
