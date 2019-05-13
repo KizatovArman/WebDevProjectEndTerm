@@ -1,20 +1,24 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<div class="form-wrapper">
 <div class = "test">
       <div *ngIf="!testTaken">
-            <div>
-                  <label class ="question">What is your weight in kg?</label><br>
-                        <input type="text" name="weight" id="weight" placeholder="Please write only numbers: eg. 70" [(ngModel)]="weightString"><br>
-                  <label class ="question">What is your height in centimeters?</label><br>
-                        <input type="text" name="height" id="height" placeholder="Please write only numbers: eg. 170" [(ngModel)]="heightString"><br>
-                  <label class ="question">Do you have blood pressure issue?</label><br>
-                        <input type="text" name="blood_pressure" id="blood_pressure" class="blood_pressure" placeholder="It's: high/low or No Issues" [(ngModel)]="bloodPressure"><br>
-                  <label class ="question">Do you have any allergies?</label><br>
-                        <input type="text" name="allergies" id="allergies" class="allergies" placeholder="Type of allergie/ No allergies" [(ngModel)]="allergies"><br>
-                  <button (click)="takeTest()">Submit</button><br/>
+            <div class="move">
+                  <label>What is your weight in kg's? <input type="number" class="form-control" style="width: 300px;" placeholder="Type numbers" [(ngModel)]="weightString"></label> <br>
+                  <label>What is your height in centimeters? <input type="number" class="form-control" style="width: 300px;"  placeholder="Type numbers" [(ngModel)]="heightString"></label> <br>
+                  <label>Do you have blood pressure issue? <input type="text" class="form-control" style="width: 300px;" placeholder="It's: high/low or No Issues" [(ngModel)]="bloodPressure"></label> <br>
+                  <label>Do you have any allergies? <input type="text" class="form-control" style="width: 300px;" placeholder="Type of allergie/ No allergies" [(ngModel)]="allergies"></label> <br> <br>
+                  <button class="btn btn-success" (click)="takeTest()">Submit</button><br/>
             </div>
       </div>
 
-      <div *ngIf="testTaken">
-            OK
-            <button (click)="takeTestAgain()">Take Test Again</button>
+      <div class="move" *ngIf="testTaken">
+           <h4>Thank you for taking test</h4> <br> <br>
+            <button class="btn btn-danger" (click)="takeTestAgain()">Take Test Again</button>
       </div>
+</div>
+
 </div>

@@ -35,7 +35,7 @@ def login(request):
 def logout(request):
     # print(request.auth)
     request.auth.delete()
-    print(request.user)
+    # print(request.user)
     return Response(status=status.HTTP_200_OK)
 
 
