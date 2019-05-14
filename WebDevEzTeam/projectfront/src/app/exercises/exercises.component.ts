@@ -28,6 +28,9 @@ export class ExercisesComponent implements OnInit {
   }
 
   showExercises(exCat: IExerciseCategory){
+    if(this.targetExercise !== null){
+      this.targetExercise = null;
+    }
     this.targetExCat = exCat;
   }
 

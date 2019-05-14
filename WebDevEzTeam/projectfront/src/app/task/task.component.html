@@ -30,6 +30,7 @@
                   <label for="exampleInputEmail1">Task Status</label><p class="font-weight-light" style="color:tomato">{{task.status}}</p>
                   <button (click)="chooseTask(task)" class="btn btn-info">Update</button>
                   <button (click)="deleteTask(task)" class="btn btn-danger">Delete</button>
+                  <div class="taski"></div>
                 </ng-container>
                 <ng-container *ngIf="task.id == cur_task_id">
                     <div class="panel-heading">  

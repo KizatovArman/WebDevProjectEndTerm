@@ -9,7 +9,7 @@ integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28an
         <div *ngFor = "let excategory of exerciseCategories">
           <div>
             <br>
-              <button class="btn btn-primary" style="margin-left: 4%;" (click)="showExercises(excategory)" (click)="getExercises(excategory)">{{excategory.name}}</button> <br>
+              <button class="btn btn-primary"  (click)="showExercises(excategory)" (click)="getExercises(excategory)">{{excategory.name}}</button> <br>
           </div>
         </div>
       </div>
@@ -17,19 +17,19 @@ integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28an
         <div *ngIf="targetExCat">
             <div *ngFor="let exercise of exercises">
               <br>
-              <button class="btn btn-success" style="margin-left: 4%;" (click)="chooseExercise(exercise)" (click)="getExerciseDetail(targetExCat, exercise)">{{exercise.title}}</button>
+              <button class="btn btn-success"  (click)="chooseExercise(exercise)" (click)="getExerciseDetail(targetExCat, exercise)">{{exercise.title}}</button>
             </div>
             <br>
-            <button class="btn btn-danger" style="margin-left: 4%;" (click)="hideExercises()">Back</button>
+            <button class="btn btn-danger"  (click)="hideExercises()">Back</button>
         </div>
         <div *ngIf="targetExCat">
-          <div *ngIf="targetExercise" style="margin-left: 4%;">
+          <div *ngIf="targetExercise" >
             <br>
             <p>Exercise Name: {{resultExercise.title}}</p> <br>
+            <img [src]='resultExercise.photo_link' alt="" style="height: 50%; width: 50%"><br>
             <p>Needed Equiment / Dress: {{resultExercise.equipment_needed}}</p> <br>
-            <p>Tips on exercise: {{resultExercise.how_to_do_tips}}</p> <br>
-            <img [src]='resultExercise.photo_link' alt="" style="height: 1700px; width: 75%">
-          
+            <h5>Tips on exercise: {{resultExercise.how_to_do_tips}}</h5> <br>
+            <div class="diety"></div>
           </div>
         </div>
       </div>
