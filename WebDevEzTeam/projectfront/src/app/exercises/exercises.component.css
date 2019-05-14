@@ -1,11 +1,11 @@
-.exercise__categories{
+/* .exercise__categories{
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
 }
 .temp{
     display: flex;
-}
+} */
 
 .form-wrapper {
     background-image:  url("https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1920x1080.jpg");
@@ -18,6 +18,6 @@
     font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
   }
   
-  p, label, small, h4 {
+  p, label, small, h4, div {
       color: white;
   }

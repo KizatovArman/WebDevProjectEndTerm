@@ -72,7 +72,7 @@
                   <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Needed Equipment:</div>
                   <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.equipment_needed}}</div>
       
-                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">How To Do:</div>
+                  <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Tips:</div>
                   <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.how_to_do_tips}</div>
       
                   <button class="btn btn-warning" (click)="chooseExercise(exercise)">Update Exercise</button><br>
@@ -86,6 +86,7 @@
                 <button class="btn btn-success" (click)="updateExercise(targetExCategory, targetExercise)">Save To Backend</button>
                 <button class="btn btn-danger" (click)="deleteExercise(targetExCategory, targetExercise)">Delete From Backend</button><br>
               </ng-container>
+              <div class="users"></div>
             </ng-container>
           </div>
       </ng-container>
