@@ -1,7 +1,5 @@
-
 .footer{
-    padding-left: 0px;
-    padding-bottom: 0px;
+    padding-top: 1%;
     position: fixed;
     width: 100%;
     left: 0;
@@ -25,7 +23,7 @@
     margin-left: 1.8%;
 }
 .footer .mail {
-    margin-left: 13%;
+    margin-left: 5%;
 }
 .footer .phone {
     margin-left: 5%;

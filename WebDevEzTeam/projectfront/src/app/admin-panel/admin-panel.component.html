@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
@@ -59,8 +59,9 @@
             <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise Photo url link" [(ngModel)]="exerciseLink">
             <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise Equipment needed" [(ngModel)]="exerciseEquipment">
             <input type="text" class="form-control" style="width: 20%;" placeholder="Exercise How to do tips" [(ngModel)]="exerciseHowTodo"> <br>
-            <button class="btn btn-success" (click)="createExercise(targetExCategory)">Create Exercise</button> <br> <br>
-            <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 16px;">Exercises :</p>
+            <button class="btn btn-success" (click)="createExercise(targetExCategory)">Create Exercise</button> <br><br>
+            
+            <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 16px; margin-bottom: 5%;">Exercises :</p>
             <ng-container class="users" *ngFor="let exercise of exercises">
               <ng-container *ngIf="targetExerciseId != exercise.id"> 
                   <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Exercise Name:</div>
@@ -73,10 +74,10 @@
                   <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.equipment_needed}}</div>
       
                   <div class="col-sm-5 col-xs-6 tital " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">Tips:</div>
-                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.how_to_do_tips}</div>
+                  <div class="col-sm-7 col-xs-6 " style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;">{{exercise.how_to_do_tips}}</div>
       
                   <button class="btn btn-warning" (click)="chooseExercise(exercise)">Update Exercise</button><br>
-                  <div class="users"></div>
+                  <!-- <div class="users"></div> -->
               </ng-container >
               <ng-container *ngIf="exercise.id == targetExerciseId">
                 <br> <input type="text" style="width: 20%;" class="form-control" [(ngModel)]="exercise.title">
@@ -137,9 +138,9 @@
           </ng-container>
       
           <ng-container *ngIf="!updateDietPressed">
-              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Title : {{diet.title}}</p>
-              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Description: </p>
-              <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%;  width: 18.8%">{{diet.description}}</p> <br>
+              <h5 style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Title : {{diet.title}}</h5>
+              <h5 style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%; width: 18.8%">Diet Description: </h5>
+              <h5 disabled style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 43.4%;  width: 18.8%">{{diet.description}}</h5> <br>
           </ng-container>
         </div>
         <button class="btn btn-danger baget" style="margin-left: 43.4%"  *ngIf="!updateDietPressed" (click)="showDiet()">Update Diets</button>

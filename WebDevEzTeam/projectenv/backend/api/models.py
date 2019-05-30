@@ -89,7 +89,7 @@ class ExercisesManager(models.Manager):
 # Exercise Model
 class Exercise(models.Model):
     title = models.CharField(max_length=255)
-    photo_link = models.CharField(max_length=255)
+    photo_link = models.CharField(max_length=1000)
     equipment_needed = models.CharField(max_length=255)
     how_to_do_tips = models.CharField(max_length=1500)
     exercise_category = models.ForeignKey(ExerciseCategory, on_delete=models.CASCADE)

@@ -2,10 +2,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
-<div class ="footer">
-    <br>
-    <label for="" class="contact">Contact us via:</label>
-    <label for="" class="mail">Email: <a href="mailto:pressFtoStayFit@gmail.com">PressFtoStayFit@gmail.com</a></label>
-    <label for="" class="phone">Phone: <a>8-727-327-77-66</a></label>
-    <label for="" class="tgg">Telegram: <a href="http://t.me/timque">@PressFtoStayFit</a></label>
+<div class ="footer" *ngIf="scrWidth > 830">
+    <label class="contact">Contact us via:</label>
+<div class="contact-items">
+    <label class="mail contact-item row-sm-4">Email: <a href="mailto:pressFtoStayFit@gmail.com">PressFtoStayFit@gmail.com</a></label>
+    <label class="phone contact-item row-sm-4">Phone: <a>8-727-327-77-66</a></label>
+    <label class="tgg contact-item row-sm-4">Telegram: <a href="http://t.me/timque">@PressFtoStayFit</a></label>
+</div>
 </div>

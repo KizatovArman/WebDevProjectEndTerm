@@ -5,10 +5,14 @@
   background-position: fixed;
   background-attachment: fixed;
   overflow: hidden;
-  height: 1500px;
+  height: 900px;
   font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
 }
 
 p, label, small, h4, div {
   color: white;
+}
+
+.users:last-child {
+  margin-bottom: 4%; 
 }

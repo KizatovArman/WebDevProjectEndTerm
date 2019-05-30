@@ -4,19 +4,38 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from api.serializers import DietSerializer, TaskSerializer
 from django.http import Http404
+from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
+from django.shortcuts import get_object_or_404
+from rest_framework import filters
+from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from api.filters import TaskFilter
 
 
 # Task Create and Get List
 class TaskListView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
-    ordering_fields = ('created_at', 'id')
-    ordering = ('-created_at', '-id')
 
     def get_queryset(self):
         return Task.objects.for_user(self.request.user)
 
     def get_serializer_class(self):
         return TaskSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class TaskListView2(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    pagination_class = LimitOffsetPagination
+
+    def get_serializer_class(self):
+        return TaskSerializer
+
+    def get_queryset(self):
+        return Task.objects.for_user(self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -38,6 +57,28 @@ class SupplementListAllowAny(generics.ListAPIView):
     queryset = Supplement.objects.all()
     serializer_class = SupplementSerializer
     http_method_names = ['get']
+
+
+class SupplementListAllowAny2(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    pagination_class = LimitOffsetPagination
+
+    def get_queryset(self):
+        return Supplement.objects.all()
+
+    def get_serializer_class(self):
+        return SupplementSerializer
+
+
+class DietsListAllowAnyPaginated(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    pagination_class = LimitOffsetPagination
+
+    def get_serializer_class(self):
+        return DietSerializer
+
+    def get_queryset(self):
+        return Diets.objects.all()
 
 
 # Works

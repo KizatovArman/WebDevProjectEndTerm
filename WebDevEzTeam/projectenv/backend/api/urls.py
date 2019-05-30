@@ -6,8 +6,10 @@ urlpatterns = [
     path('login/', views.login),
     path('logout/', views.logout),
     path('register/', views.UserCreate.as_view()),
-    path('supplements/', views.SupplementListAllowAny.as_view()),
+    path('supplements/', views.SupplementListAllowAny.as_view(), name='account-create'),
+    path('supplements/paginated/', views.SupplementListAllowAny2.as_view()),
     path('diets/', views.DietListAllowAny.as_view()),
+    path('diets/paginated/',views.DietsListAllowAnyPaginated.as_view()),
     path('exercise_categories/', views.ExerciseCategoryList.as_view()),
     path('exercise_categories/<int:pk>/', views.ExerciseCategoryInfoAllowAny.as_view()),
     path('exercise_categories/<int:pk>/exercises/', views.ExercisesViewAllowAny.as_view()),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('profile/<int:pk>/inc_task_number/', views.get_update_user_profile),
     path('tasks/', views.TaskListView.as_view()),
     path('tasks/<int:pk>/', views.TaskChange.as_view()),
+    path('tasks/paginated/', views.TaskListView2.as_view()),
     # template
     path('', views.api)
 ]

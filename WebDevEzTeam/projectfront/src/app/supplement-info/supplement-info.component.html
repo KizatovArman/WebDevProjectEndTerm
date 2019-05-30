@@ -8,11 +8,13 @@
 <ng-container>
   <div class="supplements">
     <div *ngFor = "let suppl of supplements">
-      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; width: 25%"><button class="btn btn-primary" style="width: 190px;">Supplement Title:</button> &nbsp; {{suppl.title}}</p>
-      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; width: 25%"><button class="btn btn-danger" style="width: 190px;">Supplement Description:</button> </p>
-      <p  style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%;  width: 25%">{{suppl.description}}</p> <br>
+      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; margin-top: 5%; width: 25%"><button class="btn btn-primary" style="width: 100%;">Supplement Title:</button> &nbsp; {{suppl.title}}</p><br>
+      <p style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%; width: 25%"><button class="btn btn-danger" style="width: 100%;">Supplement Description:</button> </p>
+      <p  style="font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica; margin-left: 1.5%;  width: 80%">{{suppl.description}}</p> <br>
     </div>
   </div>
 </ng-container>
+<button class="btn btn-primary" *ngIf="prevPage != ''" (click)="getSupplementsPaginatedPrev()">Previous</button>
+<button class="btn btn-primary" *ngIf="nextPage != ''" (click)="getSupplementsPaginatedNext()">Next</button>
 <div class="users"></div>
 </div>

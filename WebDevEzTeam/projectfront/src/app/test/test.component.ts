@@ -48,7 +48,7 @@ export class TestComponent implements OnInit {
 
   setAllergies(htmlId: string){
     this.allergies = document.getElementById(htmlId).className;
-    console.log(this.allergies)
+    // console.log(this.allergies)
   }
 
   takeTest(){
@@ -57,10 +57,16 @@ export class TestComponent implements OnInit {
     //   this.heightInt = Number(this.heightString)/100;
     //   this.overAllBodyTest = (this.weightInt/this.heightInt)/this.heightInt;
     // }
-    this.heightString = this.heightString/100;
-    this.overAllBodyTest = (this.weightString/this.heightString/this.heightString)
-    this.testTaken = true;
-    this.provider.takeaTest(this.user_id, this.overAllBodyTest, this.allergies, this.bloodPressure, this.profile).then(res=>{})
+    if(this.heightString <=0 || this.weightString <=0 || this.allergies =='' || this.bloodPressure ==''){
+      window.alert('Incorrect parameters')
+    }
+    else{
+      this.heightString = this.heightString/100;
+      this.overAllBodyTest = (this.weightString/this.heightString/this.heightString)
+      this.testTaken = true;
+      this.provider.takeaTest(this.user_id, this.overAllBodyTest, this.allergies, this.bloodPressure, this.profile).then(res=>{})
+    }
+    
     // console.log(this.weightInt)
     // console.log(Number('asdfsdf'))
     // console.log(this.weightString)

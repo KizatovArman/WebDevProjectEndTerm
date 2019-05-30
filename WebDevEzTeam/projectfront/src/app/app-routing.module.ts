@@ -12,6 +12,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { TestComponent } from './test/test.component';
 import { TaskComponent } from './task/task.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   {
@@ -22,10 +25,10 @@ const routes: Routes = [
     path: "",
     component: TitlePageComponent,
   },
-  // {
-  //   path:'work-on-yourself',
-  //   component: WorkOnYourselfComponent,
-  // },
+  {
+    path:'work-on-yourself',
+    component: WorkOnYourselfComponent,
+  },
   {
     path:'dietary',
     component:DietaryComponent,
@@ -57,6 +60,18 @@ const routes: Routes = [
   {
     path:'tasks',
     component:TaskComponent
+  },
+  {
+    path:'main-menu',
+    component: MainMenuComponent
+  },
+  {
+    path:'my-account',
+    component: MyAccountComponent
+  },
+  {
+    path:'contacts',
+    component: ContactsComponent
   }
   // {
   // },

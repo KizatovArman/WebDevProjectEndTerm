@@ -5,6 +5,13 @@ export interface ITask{
     created_at:Date,
 }
 
+export interface ITaskPaginted{
+    count:number,
+    next:string,
+    previous:string,
+    results: ITask[],
+}
+
 export interface IAuthResponse{
     token: string,
     user_id: number,
@@ -18,10 +25,24 @@ export interface ISupplement{
     description: string
 }
 
+export interface ISupplementPaginted{
+    count:number,
+    next: string,
+    previous:string,
+    results: ISupplement[],
+}
+
 export interface IDiet{
     id: number,
     title: string,
     description: string
+}
+
+export interface IDietPaginated{
+    count:number,
+    next: string,
+    previous:string,
+    results:IDiet[],
 }
 
 export interface IRegResponse{

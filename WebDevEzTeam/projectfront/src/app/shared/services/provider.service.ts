@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { MainService } from './main.service';
 import { HttpClient } from '@angular/common/http';
-import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile, IUserProfileList, IExercise } from '../models/models';
+import { IAuthResponse, ITask, ISupplement, IDiet, IRegResponse, IExerciseCategory, IProfile, IUserProfileList, IExercise, ITaskPaginted, ISupplementPaginted, IDietPaginated } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +45,16 @@ export class ProviderService extends MainService{
     return this.get('http://localhost:8000/api/supplements/',{});
   }
 
+  getSupplementsPaginated(url: string):Promise<ISupplementPaginted>{
+    return this.get('http://localhost:8000/api/supplements/paginated/'+url,{})
+  }
+
   getDiets():Promise<IDiet[]>{
     return this.get('http://localhost:8000/api/diets/',{});
+  }
+
+  getDietsPaginated(url: string):Promise<IDietPaginated>{
+    return this.get('http://localhost:8000/api/diets/paginated/'+url,{})
   }
 
   getExerciseCategories():Promise<IExerciseCategory[]>{
@@ -186,6 +194,11 @@ export class ProviderService extends MainService{
   // Authentificated Users
   getAllUserTasks():Promise<ITask[]>{
     return this.get('http://localhost:8000/api/tasks/',{})
+  }
+
+  // Authentificated Users
+  getPaginatedUserTasks(url: string):Promise<ITaskPaginted>{
+    return this.get('http://localhost:8000/api/tasks/paginated/'+url,{})
   }
 
   // Authentificated Users

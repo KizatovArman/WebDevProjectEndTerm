@@ -5,15 +5,15 @@
     background-position: fixed;
     background-attachment: fixed;
     overflow: hidden;
-    height: 1500px;
+    height: 800px;
     font: 15px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
   }
   
-  p, label, small, h4 {
+  p, label, small, h4, h3, h2 {
       color: white;
   }
 
   .move {
-      margin-left: 38%;
-      margin-top: 3%;
+      margin-left: 35%;
+      margin-top: 10%;
   }

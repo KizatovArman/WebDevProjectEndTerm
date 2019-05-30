@@ -21,6 +21,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { TestComponent } from './test/test.component';
 import { TaskComponent } from './task/task.component';
 import { FooterComponent } from './footer/footer.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { FooterComponent } from './footer/footer.component';
     TestComponent,
     TaskComponent,
     FooterComponent,
+    MainMenuComponent,
+    MyAccountComponent,
+    ContactsComponent,
   ],
   imports: [
     FormsModule,

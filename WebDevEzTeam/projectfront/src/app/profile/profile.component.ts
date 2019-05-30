@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../shared/services/provider.service';
+import { HostListener } from '@angular/core';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +10,9 @@ import { ProviderService } from '../shared/services/provider.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private provider: ProviderService) { }
+  constructor(private provider: ProviderService) { 
+    this.getScreenSize();
+  }
 
   private user_id = 0;
   public firstName = "";
@@ -19,6 +23,16 @@ export class ProfileComponent implements OnInit {
   public bloodPressure="";
 
   public updateUserProfile = false;
+
+  scrHeight: any;
+  scrWidth: any;
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?){
+    this.scrHeight = window.innerHeight;
+    this.scrWidth = window.innerWidth;
+    // console.log(this.scrHeight, this.scrWidth);
+  }
 
   ngOnInit() {
     const token = localStorage.getItem('token');

@@ -14,9 +14,9 @@ export class LoginComponent implements OnInit {
   public password: any ="";
   public userId = 0;
   public userName = "";
+  public errorMessage = '';
 
   message: boolean = this.logged;
-  @Output() messageEvent = new EventEmitter<boolean>();
 
   constructor(private provider: ProviderService) { }
 
@@ -28,9 +28,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  sendMessageToHeader(){
-    this.messageEvent.emit(this.message)
-  }
 
   auth(){
     if((this.login !=='') && this.password !==''){
@@ -41,7 +38,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName', res.username);
         localStorage.setItem('superUser', res.is_superuser);
         window.location.reload();
+      }).catch(function(response){
+        console.log(response.data)
       });
+    }
+    else{
+      window.alert('Please write all required data in correct format!')
     }
   }
 

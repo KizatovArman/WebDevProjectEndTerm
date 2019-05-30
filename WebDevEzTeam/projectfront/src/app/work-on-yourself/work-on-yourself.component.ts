@@ -8,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class WorkOnYourselfComponent implements OnInit {
 
   constructor() { }
+  
+  public username = '';
+  public logged = false;
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if(token){
+      this.logged = true;
+      this.username = localStorage.getItem('userName');
+    }
   }
 
 }
